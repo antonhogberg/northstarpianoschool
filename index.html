@@ -18,7 +18,7 @@
     window.addEventListener('orientationchange', setViewportHeight);
     setViewportHeight();
   </script>
-  <script>
+<script>
 (function () {
   function getParam(name){
     try { return new URL(window.location.href).searchParams.get(name); }
@@ -30,7 +30,7 @@
   var qp   = (getParam('lang') || "").toLowerCase();
   var lang = null;
 
-  // Standard: svenska domänen → svenska, men ?lang/en eller ref från engelska domänen vinner
+  // Standard: svenska domänen → svenska, men ?lang=en eller ref från engelska domänen vinner
   if (host.includes("pianoskola.com")) {
     lang = qp ? qp : (ref.includes("northstarpianoschool.com") ? "en" : "sv");
   }
@@ -45,9 +45,17 @@
 
   try { localStorage.setItem("language", lang); } catch(e){}
   document.documentElement.setAttribute("lang", lang);
-  window.__preferredLang = lang; // tillgänglig för senare skript
+  window.__preferredLang = lang;
+
+  // 🔹 Se till att själva översättningen körs direkt när sidan är redo:
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.switchLanguage === "function") {
+      window.switchLanguage(window.__preferredLang);
+    }
+  });
 })();
 </script>
+
 
 </head>
 <body class="allow-scroll">
