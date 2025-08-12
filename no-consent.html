@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="noConsentTitle"></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .faq-container, .faq-container h1, .faq-container p, .faq-container a {
+            color: #ffffff !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            font-family: Arial, sans-serif;
+        }
+        .faq-container a {
+            color: #ffd700 !important;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="piano-menu" id="menuButton" aria-expanded="false" aria-controls="main-menu">
+        <div class="white-key"></div>
+        <div class="white-key"></div>
+        <div class="white-key"></div>
+        <div class="black-key top"></div>
+        <div class="black-key bottom"></div>
+    </div>
+    <nav id="menu-placeholder"></nav>
+    <div class="faq-container">
+        <h1 data-translate="noConsentTitle"></h1>
+        <p data-translate="noConsentMessage"></p>
+    </div>
+    <script src="script.js"></script>
+    <script src="students.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('language') || 'sv';
+            injectMenu();
+            switchLanguage(lang);
+            if (typeof updateDropdown === 'function') {
+                updateDropdown();
+            }
+        });
+    </script>
+</body>
+</html>

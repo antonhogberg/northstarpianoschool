@@ -1,0 +1,3216 @@
+/* Root Variables */
+:root {
+    --vh: 1vh;
+    --gold: #ffd700;
+    --orange: #ff8c00;
+    --dark-bg: #000000;
+    --semi-dark: #4a4a4a;
+    --grey: #999999;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    position: relative;
+    min-height: 100vh;
+    display: block;
+}
+
+body.faq-page {
+    height: auto;
+    overflow-y: auto !important;
+}
+
+body.chapters {
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.popup-open .student-manager {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Layout Components */
+
+.layout-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    overflow-x: hidden;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+}
+
+.progress-container {
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.stars-svg {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#stars-4x4 {
+    aspect-ratio: 650 / 700;
+}
+
+#stars-2x2x4 {
+    aspect-ratio: 310 / 1500;
+}
+
+.stars-svg svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars-svg .exercise-code {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    fill: #999999;
+}
+
+.stars-svg .star {
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    visibility: visible !important;
+    will-change: transform;
+}
+
+/* Menu Styles */
+.hamburger-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1199;
+    padding: 20px;
+    margin: 0;
+}
+
+.hamburger-nav .menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Set initial position in CSS */
+    width: 250px;
+    height: calc(var(--vh, 1vh) * 100);
+    background: #cccccc;
+}
+
+.hamburger {
+    font-size: 48px;
+    color: var(--orange);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    line-height: 1;
+}
+
+.hamburger:hover {
+    transform: scale(1.1);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: calc(var(--vh, 1vh) * 100);
+    background: #cccccc;
+    padding: 20px 10px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+    border-right: 2px solid var(--gold);
+    box-shadow: 2px 0 10px rgba(255, 215, 0, 0.2);
+    gap: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+    transition: left 0.6s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+    display: flex;
+}
+
+.menu::before {
+    content: '';
+    height: 60px;
+    display: block;
+    width: 100%;
+}
+
+.menu.active {
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu .close-btn {
+    font-size: 48px;
+    color: var(--orange);
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    line-height: 1;
+    z-index: 1199;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.menu.active .close-btn {
+    opacity: 1;
+}
+
+.menu-content {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 0; /* Remove extra padding; .menu::before handles spacing */
+}
+
+.menu-item {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-link {
+    display: block;
+    padding: 10px 15px;
+    color: #000;
+    text-decoration: none;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.menu-link:last-child {
+    border-bottom: 1px solid #444;
+}
+
+.menu-link.active-page::after {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu-link:hover {
+    background-color: #d5d5d5;
+}
+
+.menu-link,
+.chapters-toggle {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.menu-link:active,
+.chapters-toggle:active {
+    background-color: transparent;
+}
+
+.chapters-toggle {
+    display: block;
+    color: #000;
+    padding: 10px 15px;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+    text-decoration: none;
+    position: relative;
+}
+
+.chapters-toggle::after {
+    content: '▼';
+    font-size: 9px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.menu-item.active .chapters-toggle::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.chapter-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-item.active .chapter-arrow {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    display: none;
+    background-color: #cccccc;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.submenu.open {
+    display: block;
+    max-height: 500px;
+}
+
+.submenu li {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.submenu li a {
+    display: block;
+    color: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 18px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.submenu li a span {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.submenu li a:hover {
+    background-color: #d5d5d5;
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+.language-switcher .flag {
+    font-size: 48px;
+    line-height: 1;
+    margin-right: 25px;
+}
+
+.language-switcher .flag:last-child {
+    margin-right: 0;
+}
+
+.flag {
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    color: #000;
+}
+
+.flag:hover {
+    transform: scale(1.2);
+}
+
+.piano-menu {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1202;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.white-key,
+.black-key {
+    height: 12%;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    transform-origin: center;
+}
+
+.white-key {
+    width: 75%;
+    background-color: #fff;
+    position: relative;
+}
+
+.black-key {
+    width: 0;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    transform-origin: bottom;
+}
+
+.black-key.top {
+    top: 29%;
+}
+
+.black-key.bottom {
+    top: 57%;
+}
+
+.piano-menu.active .black-key {
+    width: 50%;
+    height: 16%;
+}
+
+.piano-menu.active .black-key.top {
+    top: 27%;
+}
+
+.piano-menu.active .white-key:nth-child(1) {
+    height: 24%;
+    transform: translateY(6%);
+}
+
+.piano-menu.active .white-key:nth-child(2) {
+    height: 24%;
+}
+
+.piano-menu.active .white-key:nth-child(3) {
+    height: 24%;
+    transform: translateY(-6%);
+}
+
+/* Content Styles */
+.chapter-title {
+    position: fixed; /* Restore fixed positioning */
+    top: 0;
+    left: 0;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    color: #ffffff !important;
+    font-size: 24px;
+    display: block;
+    width: 100%;
+    background: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    z-index: 100;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow if title is too long */
+    text-overflow: ellipsis; /* Add ellipsis if title overflows */
+}
+
+.chapter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    margin-top: 60px; /* Account for fixed .chapter-title */
+    min-height: calc(var(--vh, 1vh) * 100 - 60px);
+    overflow-y: auto;
+}
+.students-title {
+    text-align: center;
+    margin: 10px 0;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    color: #ffffff !important;
+    font-size: 24px;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.chapter-number,
+.chapter-name {
+    display: block;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    color: #ffffff;
+}
+
+.chapter-number {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.chapter-name {
+    font-size: 20px;
+}
+
+
+
+.content h1 {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.title-container h1 {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.title-star {
+    width: 50px;
+    height: auto;
+}
+
+.parts {
+    width: auto;
+    max-width: 90vw;
+    min-width: 550px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: visible;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+
+.part {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    /* margin-bottom: 20px; */
+    justify-content: center;
+}
+
+.part:last-child {
+    margin-bottom: 0;
+}
+
+.exercises {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+    align-self: center;
+}
+
+.exercises svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.parts svg {
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.progress-svg {
+    width: 85%;
+    max-width: 1161.1px;
+    height: auto;
+    max-height: 100%;
+    margin: 10px auto;
+    display: block;
+}
+
+.chapter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chapter-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.chapter-link:hover {
+    text-decoration: underline;
+}
+
+.chapter-star {
+    width: 10%;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.chapter-star:hover {
+    opacity: 0.8;
+}
+
+.star-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    position: relative;
+    width: 120px;
+    height: 140px;
+    width: clamp(100px, 10vw, 150px); /* Smooth scaling */
+    box-sizing: border-box;
+    
+}
+.exercise-code {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    color: #999999;
+    padding: 0;
+    margin-top: 125px;
+    margin-right: 2px;
+    line-height: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.star {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    padding: 0;
+    margin: 0;
+    width: clamp(80px, 12vw, 120px);
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.star-chapter {
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+    padding: 0;
+    margin: 0;
+    width: 140px;
+    height: 119.26923px;
+    max-width: 100%;
+    object-fit: contain;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.star:hover {
+    opacity: 0.8;
+}
+
+.gold-star {
+    fill: var(--gold);
+    stroke: #000000;
+    stroke-width: 1;
+}
+
+.rank-badge {
+    position: absolute;
+    left: 75%;
+    top: calc(50% + 20px);
+    transform: translateY(-50%);
+    width: clamp(10%, 15%, 180px);
+    min-width: 0;
+    max-width: 180px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding-top: 35px;
+    z-index: 10;
+}
+
+#rankImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.rank-badge #rankName {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: clamp(16px, 1.7vw, 20px) !important;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+}
+
+.rank-badge #userNameDisplay {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: clamp(16px, 1.7vw, 20px) !important;
+    color: #ffffff;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.text-box {
+    position: absolute;
+    left: 12.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(130px, 13%, 177px);
+    min-width: 80px;
+    max-width: 230px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: rgba(74, 74, 74, 0.8);
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.text-box #rankTitle {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+
+.text-box #rankDescription {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: clamp(16px, 1.3vw, 18px);
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+/* Form/Input Styles */
+.student-manager {
+    padding: 0px 10px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    box-sizing: border-box;
+    position: relative; /* Ensure no spillover affects page */
+}
+
+.student-manager h1 {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.student-manager div {
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+}
+
+.student-manager #studentsLabel {
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+}
+
+.student-manager input {
+    padding: 8px 10px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    width: 320px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.student-manager input#newStudentName,
+.student-manager select#studentSelect {
+    flex: 1 1 auto;
+    padding: 8px 10px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background: var(--semi-dark);
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.student-manager input#newStudentName::placeholder {
+    color: #999999;
+}
+
+.student-manager select {
+    padding: 8px 40px 8px 10px;
+    font-size: 16px;
+    width: 320px;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 24px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    line-height: 24px;
+}
+
+.student-manager select:hover {
+    border-color: #888;
+}
+
+.student-manager select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.student-manager select#studentSelect {
+    flex: 1 1 auto;
+    padding: 8px 30px 8px 10px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background: var(--semi-dark);
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    box-sizing: border-box;
+    height: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    max-width: calc(320px - 75.25px - 2px); /* Total width minus button and separator */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.student-manager select#studentSelect:hover {
+    border-color: var(--orange);
+}
+
+.student-manager select#studentSelect:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+.student-manager button {
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 19.2px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    padding: 6px 12px;
+    background: var(--semi-dark);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.student-manager button#addStudentButton,
+.student-manager button#removeStudentButton {
+    width: 75.25px;
+    padding: 0 10px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--gold);
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 0 75.25px;
+}
+
+.student-manager button#addStudentButton:hover {
+    transform: none;
+}
+
+
+.student-manager select#studentSelect {
+    padding: 8px 30px 8px 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.student-manager .input-group {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 10px;
+    width: 320px;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    background: var(--semi-dark);
+    box-sizing: border-box;
+    padding: 0;
+    overflow: visible;
+    position: relative;
+}
+
+.student-manager .input-group .separator {
+    flex: 0 0 2px;
+    min-width: 2px;
+    background-color: var(--orange);
+    margin: 0;
+}
+
+.student-manager button#shareButton,
+.student-manager button#shareExportButton {
+    width: 320px;
+    height: 42px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: var(--semi-dark);
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    color: var(--gold);
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 19.2px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.student-manager button#shareButton:hover,
+.student-manager button#shareExportButton:hover,
+.student-manager button#shareButton:active,
+.student-manager button#shareExportButton:active {
+    transform: none !important;
+}
+
+.student-manager #exportStatus {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+.student-manager .export-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.student-manager .checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 320px;
+    height: 32px;
+    border: 1px solid var(--orange) !important;
+    border-radius: 5px !important;
+    background: var(--semi-dark) !important;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin-bottom: 10px;
+}
+
+.student-manager .checkbox-text-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.student-manager .checkbox-group input[type="checkbox"]#studentModeCheckbox {
+    width: 16px;
+    height: 16px;
+    margin: 0 5px 0 0;
+}
+
+.student-manager .checkbox-group label#studentModeLabel {
+    margin: 0;
+    line-height: 32px;
+}
+
+.student-manager .info-button {
+    width: 20px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 3px 0 0 0;
+    margin: 0;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: none;
+}
+
+.student-manager input[type="checkbox"]#studentModeCheckbox {
+    width: 20px;
+    height: 20px;
+    margin: 8px;
+    cursor: pointer;
+}
+.student-manager label#studentModeLabel {
+    display: inline-block;
+    width: auto;
+    margin: 8px 8px 8px 0;
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-button-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    margin: 0px auto;
+}
+
+.dropdown-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    background: none;
+    margin: 0px auto;
+}
+
+.notes-wrapper {
+    display: block;
+    text-align: center;
+    clear: both;
+    width: 100%;
+}
+
+.notes-container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 7px auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notes-button-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    margin: 0px auto;
+}
+
+#studentNotes {
+    width: 320px;
+    height: 240px;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    background: var(--semi-dark);
+    color: #ffffff;
+    resize: none;
+    overflow-y: auto;
+}
+
+.student-select-container {
+    position: absolute;
+    top: 18px;
+    left: 58px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+}
+
+#globalStudentSelect {
+    height: 35px;
+    width: 180px;
+    background: var(--semi-dark) url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+    background-size: 16px;
+    color: #ffffff;
+    border: 2px solid var(--gold);
+    border-radius: 5px;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    padding: 5px 30px 5px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    overflow: visible;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+    transition: filter 0.3s ease; /* For hover effect */
+}
+
+#globalStudentSelect:hover {
+    filter: brightness(1.2); /* Slightly lighten on hover */
+}
+
+#globalStudentSelect:focus {
+    outline: none;
+    border-color: var(--gold); /* Changed to gold for consistency */
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+.field-label {
+    margin: 30px 0 10px 0 !important;
+    padding: 0 !important;
+    display: block;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.field-group {
+    margin-top: 30px;
+}
+
+/* Popup Styles */
+/* Popup Styles */
+#studentModeInfoPopup .student-popup-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px; /* Increased padding for better spacing */
+    position: relative; /* Ensure the close button is positioned relative to this */
+}
+
+#studentModeInfoPopup .student-popup-content #closeStudentModeInfoPopup {
+    position: absolute;
+    top: 10px; /* Adjusted for better spacing */
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--gold);
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    z-index: 10; /* Ensure it’s above content */
+}
+
+#studentModeInfoPopup .student-popup-content p#studentModeInfoText {
+    display: block; /* Override flex from .student-popup-content p */
+    margin-bottom: 15px; /* Space between sections for <br><br> */
+    line-height: 1.6; /* Improve readability */
+    font-size: 18px;
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+}
+
+#importLoaderOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Lowered from 10000 to appear under the menu */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#importLoaderOverlay[style*="display: flex"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loader-content {
+    background-color: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    padding: 20px 40px;
+    border-radius: 5px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    text-align: center;
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 20px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-width: 100vw; /* Prevent clipping */
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    will-change: opacity;
+    overflow: visible; /* Avoid clipping by parent */
+}
+
+.popup[style*="display: flex"] {
+    pointer-events: auto;
+}
+/* Disable interactions with page content when popup is open */
+body.popup-open .layout-container,
+body.popup-open .star-map-container,
+body.popup-open .chapter-container,
+body.popup-open .student-manager,
+body.popup-open .content {
+    pointer-events: none; /* Prevent clicking stars or other content */
+}
+
+.popup-scrollable-content {
+    max-height: calc(100% - 60px); /* Adjust based on padding and other fixed elements */
+    overflow-y: auto; /* Enable vertical scrolling */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.popup-content {
+    background-color: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    padding: 30px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-content h2,
+.popup-content p {
+    color: #ffffff;
+}
+
+.popup-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.popup-content #nameInput {
+    margin: 0;
+}
+
+.popup-content input#nameInput {
+    flex: 1;
+    padding: 8px 10px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background: var(--semi-dark);
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.popup-content input#nameInput::placeholder {
+    color: #999999;
+}
+
+.popup-content button {
+    margin-top: 5px;
+    padding: 6px 12px;
+    background: var(--semi-dark);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content button:hover {
+    transform: scale(1.05);
+}
+
+.popup-content button#submitNameButton {
+    padding: 0 10px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--gold);
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    position: relative;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+}
+
+.popup-content button#submitNameButton:hover {
+    transform: none;
+}
+
+.popup-content button#submitNameButton::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--orange);
+}
+
+.popup-content .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    width: 320px;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    background: var(--semi-dark);
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.rank-badge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 15px 0;
+}
+
+.rank-badge-image {
+    max-width: 100px; /* Adjust size as needed */
+    height: auto;
+    display: block;
+}
+
+.student-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Lowered from 10000 to appear under the menu */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#qrPopup.student-popup {
+    z-index: 999; /* Override for qrPopup to appear under the menu */
+}
+
+.student-popup.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.student-popup-content {
+    background-color: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    min-height: 80px;
+}
+
+.student-popup-content p {
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.student-popup-content .popup-star {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold);
+    stroke: #000000;
+    stroke-width: 1;
+}
+
+#qrPopup .student-popup-content {
+    width: auto;
+    max-width: 90vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#qrPopup #qrCodeContainer {
+    margin: 0;
+    padding-bottom: 15px;
+    background: #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    width: 280px; /* Increased to accommodate 270px QR code + padding */
+    height: auto;
+}
+
+#qrCodeContainer canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+#qrPopup canvas {
+    width: 270px !important; /* Match QR code size */
+    height: 270px !important; /* Match QR code size */
+    max-width: 270px; /* Ensure no overflow */
+    max-height: 270px;
+}
+
+/* Star Map Styles */
+.star-map-container {
+    position: fixed;
+    top: 70px;
+    transform: none;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    height: calc(100vh - 70px);
+    flex-shrink: 0;
+    white-space: nowrap;
+    display: flex;
+}
+
+.star-map-container svg {
+    width: 2800px;
+    height: 100% !important;
+    display: block;
+    position: relative;
+    left: 500px; /* Offset to account for the description width */
+}
+
+.star-map-container svg#starMap {
+    position: absolute;
+    top: 0;
+    transform: none;
+}
+
+.star-map-container.rubberband {
+    animation: rubberband 0.5s ease-out;
+}
+
+/*popup close button*/
+.popup-content .close-button {
+    position: absolute;
+    top: 0px; /* Adjusted for better spacing */
+    right: 10px;
+    background: none !important;
+    border: none !important;
+    font-size: 24px;
+    color: #ffd700;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    line-height: normal;
+    z-index: 10; /* Ensure above content */
+}
+
+.info-text {
+    font-size: small;
+}
+
+.info-overlay {
+    position: absolute;
+    top: 40%;
+    left: 510px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 100;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.info-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.info-overlay:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.info-overlay .arrow,
+.info-overlay .info-icon {
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 5px;
+    line-height: 1;
+    font-family: Arial, sans-serif; /* Ensures consistent rendering */
+}
+
+.info-overlay .info-icon {
+    border-radius: 50%;
+    width: 28px; /* Slightly larger for ℹ️ */
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(1px); /* Shift info icon downward slightly */
+}
+
+@keyframes rubberband {
+    0% { transform: scaleX(1); }
+    30% { transform: scaleX(1.25); }
+    60% { transform: scaleX(0.75); }
+    100% { transform: scaleX(1); }
+}
+
+#rankAchievementPopup .popup-content h2#rankAchievementMessage {
+    color: #ffffff;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 24px;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+#rankAchievementPopup .popup-content {
+    padding: 20px !important;
+}
+
+h2#popupWelcome {
+    margin: 0;
+}
+.popup-content h3#rankAchievementSubtitle {
+    color: #fff;
+    font-family: Cochin, Georgia, Arial, sans-serif; /* Match the page's font */
+    font-size: 20px; /* Adjust as needed */
+    margin: 10px 0;
+    text-align: center;
+}
+
+.popup-content p#rankAchievementDescription {
+    color: #fff; 
+    font-family: Cochin, Georgia, Arial, sans-serif; /* Match the page's font */
+    font-size: 20px; /* Adjust as needed */
+    margin: 10px 0 0 0;
+    text-align: center;
+}
+
+
+/* Pulsating animation */
+@keyframes pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+.description-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 30px; /* Equal padding on all sides */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 2px solid #FFD700; /* Gold border */
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 80px;
+    white-space: normal;
+}
+
+.description-container h3 {
+    text-align: center;
+    margin-top: 0; /* Ensure no extra top margin */
+    padding-top: 0; /* Ensure no top padding */
+}
+
+.star-map-steps p {
+    margin-bottom: 35px; /* Increased to add more space (17.5px above and below the line) */
+    white-space: normal;
+    position: relative;
+}
+
+.star-map-steps p:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -17.5px; /* Center the line in the 35px gap */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42.5%; /* Increased to 40-45% of the container's width */
+    height: 1px;
+    background-color: #ffffff; /* Changed to white */
+}
+
+.star-map-steps p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for Star Map */
+@media (max-width: 767px) and (orientation: portrait) {
+    .star-map-container {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+    .star-map-container svg {
+        left: 300px; /* Smaller offset for smaller screens */
+    }
+
+    .student-manager .checkbox-group {
+        width: auto;
+        margin-bottom: 10px;
+        border: 1px solid var(--orange) !important;
+        border-radius: 5px !important;
+        background: var(--semi-dark) !important;
+    }
+
+    .info-overlay {
+        left: 310px;
+    }
+
+    .info-overlay .info-overlay .arrow { /* Increased specificity */
+        font-size: 24px;
+    }
+
+    .info-overlay .info-overlay .info-icon { /* Increased specificity */
+        font-size: 26px;
+        width: 30px;
+        height: 30px;
+        transform: translateY(1px);
+    }
+
+    .description-container {
+        width: 240px;
+        padding: 30px; /* Equal padding on all sides, matching desktop */
+        margin-right: 80px;
+        margin-bottom: 20px;
+    }
+    .description-container h3 {
+        font-size: 18px;
+    }
+    .description-container li {
+        font-size: 16px;
+    }
+
+    .info-overlay .arrow {
+        font-size: 20px;
+    }
+
+    .info-overlay .info-icon {
+        font-size: 16px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) and (orientation: landscape) {
+    .star-map-container {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+}
+
+/* iPad Mini landscape adjustments */
+@media (min-width: 1000px) and (max-width: 1100px) and (orientation: landscape) {
+    .description-container {
+        width: 430px;
+        margin-right: 90px;
+    }
+    .info-overlay {
+        left: 540px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) and (orientation: landscape) {
+    .star-map-container {
+        top: 50px;/* Miscellaneous Styles */
+        height: calc(100vh - 50px);
+        max-height: 960px;
+    }
+    .congratulations-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10002; /* Lowered from 1000 to appear under the menu */
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    .congratulations-message {
+        background: var(--dark-bg);
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        color: var(--gold);
+        font-family: Cochin, Georgia, Arial, sans-serif;
+        font-size: 24px;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        animation: pulse 2s infinite;
+    }
+
+    .popup-content {
+        max-width: 700px; /* Already looks good on iPad Pro 13" */
+    }
+    
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+}
+
+@media (min-width: 1401px) and (orientation: landscape) and (hover: hover) and (min-aspect-ratio: 16/10) {
+    .star-map-container {
+        height: calc(100vh - 70px);
+        top: 70px;
+    }
+}
+
+/* Miscellaneous Styles */
+.congratulations-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002; /* Lowered from 1000 to appear under the menu */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.congratulations-message {
+    background: var(--dark-bg);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: var(--gold);
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 24px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* FAQ Page Scrolling */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.faq-item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.faq-question {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.faq-arrow {
+    display: inline-block !important; /* Override any potential hiding */
+    font-size: 14px;
+    transition: transform 0.5s ease-in-out;
+    visibility: visible !important; /* Ensure visibility */
+    color: #000;
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Slower and smoother */
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    padding: 0 10px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px !important;
+    padding: 10px;
+    display: block;
+}
+
+.user-name-box {
+    background-color: #4a4a4a;
+    border: 1px solid #ff8c00;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 20px;
+    margin: 10px 0; /* Remove auto to rely on flex centering */
+    min-width: 200px;
+    max-width: 250px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* Export Section */
+.export-section {
+    margin-top: 2rem;
+    margin-bottom: 30px;
+}
+
+.export-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Remove Page Styles */
+.remove-container {
+    padding: 0px 10px 20px 10px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.remove-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px; /* Added spacing */
+}
+
+#removeStudentButton {
+    width: 320px;
+    min-height: 42px; /* Allow expansion for multi-row text */
+    padding: 10px 15px; /* Add padding for text spacing */
+    margin: 0;
+    background: var(--semi-dark);
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    color: var(--gold);
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5; /* Improve multi-row readability */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    white-space: normal; /* Ensure wrapping */
+}
+
+#removeStudentButton:hover {
+    transform: none !important;
+}
+
+/* Confirmation Popup for Remove Page */
+#confirmRemovePopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100% !important; /* Override max-width from .student-popup */
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+#confirmRemovePopup.show {
+    display: flex;
+}
+
+#confirmRemovePopup .student-popup-content {
+    position: relative;
+    background-color: var(--dark-bg);
+    background-image: url('background.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+    padding: 20px 0 23px 0;
+    border-radius: 10px;
+    text-align: center;
+    border: 3px solid #ff0000;
+    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+    }
+    to {
+        box-shadow: 0 0 25px #ff0000, 0 0 50px #ff0000;
+    }
+}
+
+#confirmRemovePopup .student-popup-content p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+#confirmRemovePopup .student-popup-content button {
+    width: 320px;
+    height: 42px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: var(--semi-dark);
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    color: var(--gold);
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 19.2px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#confirmRemovePopup .student-popup-content button:hover {
+    transform: none !important;
+}
+
+#confirmRemovePopup .student-popup-content #closeConfirmRemovePopup {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffd700;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    line-height: normal;
+}
+
+#consentPopup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 25vh;
+    max-height: 30vh;
+    background: #f0f0f0;
+    color: #333;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.consent-popup-content {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+}
+#consentMessage {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+.consent-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+#consentAcceptButton, #consentRejectButton, #consentPolicyLink {
+    background: #ffd700;
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+    flex: 0 1 auto;
+}
+#consentPolicyLink {
+    background: none;
+    text-decoration: underline;
+}
+#consentAcceptButton, #consentRejectButton {
+    background: #ffd700;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#consentPolicyLink {
+    background: none;
+    border: none;
+    color: #333;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+#privacyPolicyPopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    overflow: auto;
+    box-sizing: border-box;
+    margin: 0; /* Ensure no margins interfere */
+    padding: 0; /* Ensure no padding interferes */
+}
+.privacy-popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 600px;
+    overflow-y: auto;
+    position: relative;
+    color: #333;
+    margin: 20px;
+    box-sizing: border-box;
+    transform: none; /* Ensure no transform conflicts */
+}
+#closePrivacyPopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+.privacy-popup-content h1, .privacy-popup-content h2 {
+    color: #333;
+}
+.privacy-popup-content p {
+    margin: 10px 0;
+}
+.privacy-popup-content ul {
+    margin: 10px 0 10px 20px;
+}
+.rank-badge-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 1000; /* Below .piano-menu (1202), above content */
+    cursor: pointer;
+}
+
+/* MODIFIED: Bottom close button styling */
+.popup-content .close-bottom {
+    position: relative; /* Override .close-button's absolute positioning */
+    top: auto; /* Reset top positioning */
+    right: auto; /* Reset right positioning */
+    margin: 10px auto 0; /* Center horizontally, add top margin */
+    padding: 8px 16px;
+    background: var(--semi-dark);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    color: var(--gold);
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block; /* Ensure centering */
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Match other buttons */
+    line-height: normal;
+}
+
+.popup-content .close-bottom:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive widths for remove.html */
+@media (max-width: 767px) and (orientation: portrait) {
+    #removeStudentButton {
+        width: 72vw;
+        min-height: 42px; /* Allow expansion for multi-row text */
+        padding: 10px 15px; /* Add padding for text spacing */
+        line-height: 1.5; /* Improve multi-row readability */
+        white-space: normal; /* Ensure wrapping */
+    }
+    #confirmRemovePopup .student-popup-content button {
+        width: 72vw;
+    }
+}
+
+/* Media Queries */
+
+/* General min-width: 1001px */
+@media (min-width: 1001px) {
+    .text-box #rankTitle {
+        font-size: clamp(24px, 2vw, 28px);
+    }
+}
+
+/* General max-width: 768px */
+@media (max-width: 768px) {
+    .faq-container {
+        width: 70vw;
+        max-width: none;
+    }
+}
+
+/* Mobile portrait (max-width: 767px) */
+@media (max-width: 767px) and (orientation: portrait) {
+    .faq-answer {
+        font-size: 14px;
+    }
+    .faq-item.active .faq-answer {
+        max-height: 1000px !important;
+    }
+    .title-container h1 {
+        font-size: 24px;
+    }
+    .title-star {
+        width: 40px;
+    }
+    #userNameDisplay {
+        margin: 10px auto;
+    }
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        display: block;
+    }
+    body.no-scroll {
+        height: 100vh;
+        overflow-y: hidden !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    body.chapters .stars-svg#stars-4x4 {
+        display: none !important;
+    }
+    body.chapters .stars-svg#stars-2x2x4 {
+        display: block !important;
+        width: calc(85vw);
+        max-width: 310px;
+        height: auto;
+        margin: 40px auto 0;
+    }
+    body.chapters .chapter-container {
+        padding: 10px;
+        overflow-y: auto;
+        margin-top: 50px;
+        min-height: calc(var(--vh, 1vh) * 100 - 50px);
+    }
+    body.chapters .chapter-title {
+        position: fixed;
+        font-size: 20px;
+        margin: 0;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    .privacy-popup-content {
+        width: 90vw;
+        max-height: 85vh;
+        margin: 10px;
+        padding: 15px;
+    }
+    #consentPopup {
+        padding: 10px;
+        min-height: 25vh;
+        max-height: 40vh;
+    }
+    .consent-buttons {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    #consentMessage {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+    #consentAcceptButton, #consentRejectButton, #consentPolicyLink {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+    .star-chapter {
+        width: 140px;
+        height: 119.26923px;
+    }
+    .exercise-code {
+        margin-top: 139.20798px;
+        margin-right: 0;
+        font-size: 14px;
+    }
+    .parts, .exercises, .star-container {
+        display: none;
+    }
+    body.chapters {
+        height: auto;
+        overflow-y: auto;
+    }
+    .chapter-container {
+        height: auto;
+        overflow: visible;
+        padding: 10px;
+        overflow-y: auto;
+    }
+    .user-name-box {
+        font-size: 16px;
+        padding: 8px;
+        min-width: 200px;
+        max-width: 250px;
+        margin: 10px 0;
+    }
+    .layout-container {
+        height: auto;
+        overflow-y: visible;
+    }
+    .progress-container {
+        width: 100%;
+        height: auto;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .progress-svg {
+        width: 200%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+        margin: 10px auto;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow-x: hidden;
+        display: block;
+    }
+    .rank-badge {
+        position: static;
+        transform: none;
+        min-width: 200px;
+        max-width: 250px;
+        margin: 10px auto;
+        padding-top: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-badge {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin: 20px 0;
+        display: block;
+    }
+    .logo-badge img {
+        display: none;
+    }
+    .chapter-title {
+        position: static;
+        font-size: 20px;
+        margin: 0 0 10px 0;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    .chapter-number {
+        font-size: 24px;
+    }
+    .chapter-name {
+        font-size: 20px;
+    }
+    .star {
+        width: 140px;
+        min-width: 140px;
+        max-width: 140px;
+        height: auto;
+        object-fit: contain;
+    }
+    .text-box {
+        position: static;
+        transform: none;
+        width: 80%;
+        max-width: 300px;
+        margin: 10px auto 20px auto;
+        display: block;
+    }
+    .text-box #rankTitle {
+        font-size: 24px !important;
+    }
+    .text-box #rankDescription {
+        font-size: 16px !important;
+    }
+    .student-manager {
+        padding: 0px 10px;
+    }
+    .student-manager .input-group {
+        width: 72vw !important;
+        padding: 0 !important;
+    }
+    .notes-button-container {
+        width: 72vw;
+    }
+    .student-manager .checkbox-group {
+        width: 72vw;
+    }
+    .student-manager button#shareButton,
+    .student-manager button#shareExportButton {
+        width: 72vw;
+        font-size: 15px;
+    }
+    .student-manager #exportStatus {
+        margin-bottom: 10px;
+    }
+    .students-title {
+        margin-top: 0;
+    }
+    .input-button-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: none;
+        background: none;
+        margin: 0px auto;
+    }
+    .dropdown-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0px;
+        border: none;
+        background: none;
+        margin: 0px auto;
+    }
+    .notes-container {
+        margin: 2px auto;
+    }
+    .notes-button-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0px auto;
+        border: none;
+        background: none;
+    }
+    #studentNotes {
+        width: 72vw;
+        height: 360px;
+        font-size: 18px !important;
+    }
+    .student-manager input#newStudentName {
+        font-size: 18px !important;
+        padding: 8px 10px;
+        line-height: 24px;
+    }
+    .student-manager select#studentSelect {
+        font-size: 18px !important;
+        padding: 8px 30px 8px 10px;
+        line-height: 24px;
+        max-width: calc(72vw - 75.25px - 2px); /* Adjust for mobile width */
+    }
+    .popup-content {
+        width: 90vw !important;
+        max-width: 90vw;
+        padding: 15px !important;
+        box-sizing: border-box;
+        max-height: 80vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .popup-content p {
+        font-size: 14px;
+    }
+    .popup-content .input-group {
+        width: 72vw;
+    }
+    .popup-content input#nameInput {
+        width: auto;
+        font-size: 18px !important;
+        padding: 8px 10px;
+        line-height: 24px;
+    }
+    .student-popup {
+        max-width: 80%;
+    }
+    .student-popup-content {
+        width: 90vw;
+        max-width: 90vw;
+        padding: 8px 12px;
+        font-size: 16px;
+        border: 2px solid var(--gold);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    .student-popup-content .popup-star {
+        width: 16px;
+        height: 16px;
+    }
+    .student-popup-content p {
+        font-size: 18px;
+    }
+    .content h1 {
+        font-size: 30px;
+        margin: 20px 0 40px 0;
+    }
+    #userNameDisplay {
+        margin: 10px auto;
+    }
+    #importLoaderOverlay {
+        max-width: 80%;
+    }
+    .loader-content {
+        width: 90vw;
+        max-width: 90vw;
+        padding: 15px 20px;
+    }
+    .star-map-container {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+    #removeStudentSelect,
+    #removeStudentButton {
+        width: 72vw;
+    }
+    #confirmRemovePopup .student-popup-content button {
+        width: 72vw;
+    }
+    .congratulations-message {
+        max-width: 80vw;
+        font-size: 18px;
+        padding: 15px;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+    #rankAchievementPopup .popup-content h2#rankAchievementMessage {
+        font-size: 20px;
+    }
+}
+
+/* Mobile landscape */
+@media (orientation: landscape) and (max-width: 767px), (orientation: landscape) and (hover: none) and (pointer: coarse) {
+    body.is-mobile,
+    body {
+        display: block;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: none;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+    body.is-mobile:after,
+    body:after {
+        display: none;
+    }
+    .layout-container.is-mobile,
+    .layout-container {
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: none;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+}
+
+/* Catch-all iPads in landscape */
+@media (min-width: 768px) and (max-width: 1400px) and (orientation: landscape) {
+    body {
+        overflow: hidden !important;
+        height: 100vh;
+        overscroll-behavior: none;
+    }
+    body.student-manager-page {
+        overflow-y: auto !important;
+        height: auto;
+        min-height: 100vh;
+    }
+    body.faq-page {
+        overflow-y: auto !important;
+        overscroll-behavior: auto !important;
+    }
+    body.chapters .stars-svg#stars-4x4 {
+        display: block;
+        max-width: 650px;
+        max-height: calc(90% - 60px);
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: contain;
+    }
+    body.chapters .stars-svg#stars-2x2x4 {
+        display: none;
+    }
+    body.chapters .chapter-container {
+        position: relative;
+        padding: 20px;
+        min-height: calc(var(--vh, 1vh) * 100 - 60px);
+    }
+    .user-name-box {
+        min-width: 200px;
+        max-width: 250px;
+        font-size: 18px;
+    }
+    .chapter-title {
+        padding: 10px 0;
+        flex-shrink: 0;
+    }
+    .chapter-number {
+        font-size: 32px;
+        margin-top: 0;
+    }
+    .chapter-name {
+        font-size: 28px;
+    }
+    .star-chapter {
+        width: 140px;
+        height: 119.26923px;
+    }
+    .exercise-code {
+        margin-top: 139.20798px;
+        margin-right: 0;
+        font-size: 16px;
+    }
+    .layout-container {
+        overflow-y: auto !important;
+        height: auto;
+        min-height: calc(var(--vh, 1vh) * 100);
+    }
+    .layout-container:not(.is-mobile) {
+        overflow-y: auto !important;
+    }
+    .progress-container {
+        width: 100%;
+        max-width: 1366px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(var(--vh, 1vh) * 100);
+        overflow-y: hidden !important;
+    }
+    .parts {
+        height: calc(100% - 20px);
+        flex-grow: 0;
+        justify-content: space-between;
+    }
+    #stars-4x4 {
+        display: block !important;
+        width: 100%;
+    }
+    #stars-2x2x4 {
+        display: none !important;
+    }
+    .progress-svg {
+        width: 85%;
+        max-width: 1161.1px;
+        height: auto;
+        max-height: 100%;
+    }
+    .rank-badge {
+        position: absolute;
+        left: 75%;
+        top: calc(50% + 20px);
+        transform: translateY(-50%);
+        min-width: 200px;
+        max-width: 250px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border: none;
+        padding-top: 35px;
+        z-index: 10;
+    }
+    .logo-badge {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+    }
+    .logo-badge img {
+        width: 150px;
+        height: auto;
+    }
+    .notes-container {
+        width: 100%;
+        max-width: 100vw;
+        margin: 2px auto;
+    }
+    .notes-button-container {
+        padding: 10px;
+        margin: 5px auto;
+    }
+    .input-button-container {
+        padding: 0px;
+    }
+    .dropdown-container {
+        padding: 0px;
+    }
+    #studentNotes {
+        width: 320px;
+        height: 360px;
+        padding: 10px;
+        font-size: 18px !important;
+    }
+    .student-manager input#newStudentName {
+        font-size: 18px !important;
+        padding: 8px 10px;
+        line-height: 24px;
+    }
+    .student-manager select#studentSelect {
+        font-size: 18px !important;
+        padding: 8px 40px 8px 10px;
+        line-height: 24px;
+        background-position: right 10px center;
+        background-size: 24px;
+    }
+    .student-manager {
+        padding: 0px 10px;
+        overflow-y: visible;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .student-manager h1 {
+        margin-bottom: 10px;
+    }
+    .export-section {
+        margin-top: 1rem;
+        margin-bottom: 20px;
+    }
+    .export-button-container {
+        margin-bottom: 10px;
+    }
+    .popup {
+        max-width: 40%;
+    }
+    .popup-content {
+        padding: 35px 35px 40px 35px;
+        max-width: 700px;
+    }
+    .popup-content input#nameInput {
+        font-size: 18px !important;
+        padding: 8px 10px;
+        line-height: 24px;
+    }
+    .student-popup {
+        max-width: 40%;
+    }
+    .star-map-container {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+    .congratulations-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 10002;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .congratulations-message {
+        background: var(--dark-bg);
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        color: var(--gold);
+        font-family: Cochin, Georgia, Arial, sans-serif;
+        font-size: 24px;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        animation: pulse 2s infinite;
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+}
+
+/* iPad Mini landscape adjustments */
+@media (min-width: 1000px) and (max-width: 1100px) and (orientation: landscape) {
+    .description-container {
+        width: 430px;
+        margin-right: 90px;
+    }
+    .info-overlay {
+        left: 540px;
+    }
+}
+
+/* iPad 1, 2, Mini, Air portrait (768x1024, pixel ratio 1) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+    .exercise-code {
+        margin-top: 105px;
+        margin-right: 2px;
+        font-size: 14px;
+    }
+}
+
+/* iPad 1, 2, Mini, Air landscape (768x1024, pixel ratio 1) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    .exercise-code {
+        margin-top: 105px;
+        margin-right: 2px;
+        font-size: 14px;
+    }
+    .description-container {
+        width: 430px;
+        margin-right: 90px;
+    }
+    .info-overlay {
+        left: 540px;
+    }
+}
+
+/* iPad 3, 4, Pro 9.7" portrait (768x1024, pixel ratio 2) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+    .exercise-code {
+        margin-top: 85px;
+        margin-right: 2px;
+        font-size: 12px;
+    }
+}
+
+/* iPad 3, 4, Pro 9.7" landscape (768x1024, pixel ratio 2) */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    .exercise-code {
+        margin-top: 105px;
+        margin-right: 2px;
+        font-size: 14px;
+    }
+}
+
+/* iPad 11" and Similar Tablets (834px–1193px, Pixel Ratio 2) */
+@media only screen and (min-device-width: 834px) and (max-device-width: 1193px) and (-webkit-min-device-pixel-ratio: 2) {
+    .exercise-code {
+        margin-top: 125px;
+        margin-right: 4px;
+    }
+    .star-map-container {
+        top: 50px;
+        height: calc(100vh - 50px);
+        max-height: 960px;
+    }
+}
+
+/* iPad Pro 12.9" (1194px–1366px, Pixel Ratio 2) */
+@media only screen and (min-device-width: 1194px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+    .exercise-code {
+        margin-top: 155px;
+        margin-right: 4px;
+    }
+    .star-map-container {
+        top: 50px;
+        height: calc(100vh - 50px);
+        max-height: 960px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1401px) and (orientation: landscape) and (hover: hover) and (min-aspect-ratio: 16/10) {
+    body.chapters {
+        overflow: hidden !important;
+        height: calc(var(--vh, 1vh) * 100);
+        display: flex;
+        flex-direction: column;
+    }
+    body.chapters .stars-svg#stars-4x4 {
+        display: block;
+        max-width: 650px;
+        max-height: calc(90% - 60px);
+        width: 100%;
+        height: auto !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: contain;
+    }
+    body.chapters .stars-svg#stars-2x2x4 {
+        display: none !important;
+    }
+    body.chapters .chapter-container {
+        position: relative;
+        padding: 20px;
+        min-height: calc(var(--vh, 1vh) * 100 - 60px);
+    }
+    .chapter-title {
+        padding: 10px 0;
+        flex-shrink: 0;
+    }
+    .chapter-number {
+        font-size: 32px;
+    }
+    .chapter-name {
+        font-size: 28px;
+    }
+    .star-chapter {
+        width: 140px;
+        height: 119.26923px;
+    }
+    .exercise-code {
+        margin-top: 139.20798px;
+        margin-right: 0;
+        font-size: 16px;
+    }
+    .parts, .exercises, .star-container {
+        display: none;
+    }
+    .star-map-container {
+        height: calc(100vh - 70px);
+        top: 70px;
+    }
+    .popup {
+        max-width: 40%;
+    }
+    .popup-content {
+        max-width: 600px;
+    }
+}
+
+/* General popup adjustment */
+@media (min-width: 768px) {
+    body.popup-open {
+        overflow: visible !important;
+    }
+}
+/* Vimeo-video responsive and styled */
+/* Undantag för index.html */
+body.allow-scroll {
+    height: auto; /* Tillåt dynamisk höjd */
+    overflow-y: auto; /* Tillåt vertikal scrollning */
+    overflow-x: hidden; /* Behåll horisontell begränsning om önskat */
+}
+
+/* Ta bort eller modifiera no-scroll för undantaget */
+body.allow-scroll.no-scroll {
+    height: auto; /* Ignorera 100vh */
+    overflow-y: auto; /* Tillåt scroll även med no-scroll */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Video-wrapper positionering (obehandlad) */
+.video-wrapper {
+    height: 75vh;
+    max-width: 90vw;
+    aspect-ratio: 16 / 9;
+    margin: 40px auto;
+    border-radius: 12px !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    min-height: 0;
+}
+
+
+.responsive-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 12px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-fallback-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: none; /* Hidden by default */
+}
+
+.responsive-video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+
+.player {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+/* Content Styles */
+.layout-container h1,
+.layout-container p,
+.layout-container a {
+    font-family: Cochin, Georgia, Arial, sans-serif; /* Matcha övrig sida */
+}
+
+.layout-container h1 {
+    margin-top: 0;
+}
+
+/* Apple Books-knapp */
+.apple-books-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4a4a4a; /* Matchar --semi-dark för subtil look */
+    color: #ffffff;
+    text-decoration: none;
+    font-family: Cochin, Georgia, Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 5px; /* Rundade hörn */
+    border: 1px solid #666; /* Ljusare grå kant för subtil effekt */
+    text-align: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Mjuk hover-effekt */
+    max-width: 80vw; /* Begränsa bredd till 80vw på mobil */
+    white-space: nowrap; /* Förhindra radbrytning */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Klipp av om texten blir för lång */
+}
+
+.apple-books-button:hover {
+    background-color: #5a5a5a; /* Lättare skiftning mot mörkare grå */
+    color: #e0e0e0; /* Lättare textfärg för subtil kontrast */
+    text-decoration: none; /* Ta bort understrykning vid hover */
+}
+
+.player.right-content-area-supported {
+    border-radius: 12px !important;
+        overflow: hidden;
+}
+/* Mobile portrait (max-width: 767px) */
+@media (max-width: 767px) and (orientation: portrait) {
+  .video-wrapper {
+        width: 90vw;
+        max-width: 90vw;
+        aspect-ratio: 9 / 16;
+        border-radius: 12px; /* Lägg till explicitt för mobil */
+        overflow: hidden;
+    }
+    .responsive-video {
+        border-radius: 12px !important; /* Försäkra på mobil */
+        overflow: hidden;
+    }
+    .player {
+        border-radius: 12px !important; /* Försäkra på mobil */
+        overflow: hidden;
+    }
+    .layout-container a {
+        max-width: 85vw; /* Begränsa textbredd till 80vw på mobil */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    .layout-container h1
+    {
+        max-width: 60vw; /* Begränsa textbredd till 80vw på mobil */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+    }
+}
+
+/* iPad and other devices */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1366px) {
+  .video-wrapper {
+    height: 65vh;
+    max-width: 90vw;
+    aspect-ratio: 9 / 16; /* Landscape for iPads */
+  }
+  .apple-books-button {
+        max-width: 300px; /* Begränsa bredd på iPad och desktop */
+    }
+}
+
+/* Desktop and other non-mobile-portrait devices */
+@media (min-width: 1401px) {
+  .video-wrapper {
+    height: 75vh;
+    max-width: 90vw;
+    aspect-ratio: 9 / 16; /* Landscape for desktops */
+  }
+  .apple-books-button {
+        max-width: 300px; /* Begränsa bredd på iPad och desktop */
+    }
+}

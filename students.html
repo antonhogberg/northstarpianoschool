@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title data-translate="menuStudents">Nordstjärnans Pianoskola - Elever</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <link rel="stylesheet" href="cookieconsent.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initializeConsentPopup === 'function') {
+          initializeConsentPopup();
+      }
+  });
+  </script>
+  <script>
+    function setViewportHeight() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
+    setViewportHeight();
+  </script>
+  <script>
+// Export function
+function shareExport() {
+  try {
+    const exportStatus = document.getElementById('exportStatus');
+    const qrPopup = document.getElementById('qrPopup');
+    const qrCodeContainer = document.getElementById('qrCodeContainer');
+    const shareButton = document.getElementById('shareButtonInQR');
+    const closeQrPopup = document.getElementById('closeQrPopup');
+    const studentModeCheckbox = document.getElementById('studentModeCheckbox');
+    const lang = localStorage.getItem('language') || 'sv';
+
+    if (!exportStatus || !qrPopup || !qrCodeContainer || !shareButton || !closeQrPopup || !studentModeCheckbox) {
+      console.error('Missing elements:', {
+        exportStatus: !!exportStatus,
+        qrPopup: !!qrPopup,
+        qrCodeContainer: !!qrCodeContainer,
+        shareButton: !!shareButton,
+        closeQrPopup: !!closeQrPopup,
+        studentModeCheckbox: !!studentModeCheckbox
+      });
+      alert('Error: Page elements not found.');
+      return;
+    }
+
+    exportStatus.style.display = 'block';
+    exportStatus.textContent = window.translations?.[lang]?.creatingLink || 'Generating link, please wait…';
+
+    const studentsData = JSON.parse(localStorage.getItem('starAcademyStudents')) || { students: {}, currentStudent: '' };
+    const current = studentsData.currentStudent;
+    if (!current || !studentsData.students[current]) {
+      console.warn('No current student selected');
+      exportStatus.style.display = 'none';
+      alert(window.translations?.[lang]?.exportError || 'Could not export student data.');
+      return;
+    }
+
+    const progressDigits = [];
+    for (let chapter = 1; chapter <= 7; chapter++) {
+      for (let part = 1; part <= 4; part++) {
+        for (let exercise = 1; exercise <= 4; exercise++) {
+          const key = `exercise${chapter}:${part}:${exercise}`;
+          progressDigits.push(studentsData.students[current].progress[key] || '0');
+        }
+      }
+    }
+    const dataToExport = {
+      name: current,
+      progress: progressDigits.join(''),
+      rank: studentsData.students[current].rank,
+      notes: studentsData.students[current].notes || '',
+      studentMode: studentModeCheckbox.checked
+    };
+
+    const jsonString = JSON.stringify(dataToExport);
+    console.log('Export JSON size:', jsonString.length, 'chars');
+    console.log('Export JSON:', jsonString);
+
+    if (!window.LZString) {
+      console.error('LZString not loaded');
+      alert('Error: Compression library missing.');
+      return;
+    }
+    const compressed = LZString.compressToEncodedURIComponent(jsonString);
+    console.log('Compressed code size:', compressed.length, 'chars');
+    const importUrl = `${window.location.origin}/ranks.html?code=${compressed}`;
+
+    if (!window.QRCode) {
+      console.error('QRCode not loaded');
+      alert('Error: QR code library missing.');
+      return;
+    }
+    qrCodeContainer.innerHTML = '';
+    new QRCode(qrCodeContainer, {
+      text: importUrl,
+      width: 270,
+      height: 270,
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+    qrPopup.style.display = 'flex';
+    qrPopup.classList.add('show');
+    exportStatus.style.display = 'none';
+
+    shareButton.onclick = async () => {
+      try {
+        if (navigator.share && navigator.canShare({ url: importUrl })) {
+          await navigator.share({ title: 'Elevdata', url: importUrl });
+        } else {
+          await navigator.clipboard.writeText(importUrl);
+          alert(window.translations?.[lang]?.copyLinkSuccess || 'Link copied to clipboard!');
+        }
+      } catch (err) {
+        console.error('Error sharing:', err);
+        await navigator.clipboard.writeText(importUrl);
+        alert(window.translations?.[lang]?.copyLinkSuccess || 'Link copied to clipboard!');
+      }
+    };
+
+    closeQrPopup.onclick = () => {
+      qrPopup.style.display = 'none';
+      qrPopup.classList.remove('show');
+    };
+  } catch (error) {
+    console.error('Export failed:', error);
+    exportStatus.style.display = 'none';
+    alert(window.translations?.[lang]?.exportError || 'Could not export student data.');
+  }
+}
+</script>
+</head>
+<body class="student-manager-page">
+    <div class="piano-menu" id="menuButton" aria-expanded="false" aria-controls="main-menu">
+    <div class="white-key"></div>
+    <div class="white-key"></div>
+    <div class="white-key"></div>
+    <div class="black-key top"></div>
+    <div class="black-key bottom"></div>
+  </div>
+  <nav id="menu-placeholder"></nav>
+  <div class="student-manager">
+    <h1 id="studentsPageTitle" class="students-title" data-translate="studentManager"></h1>
+
+    <div id="addStudentLabel" class="field-label" data-translate="addStudentLabel"></div>
+    <div class="input-button-container">
+        <div class="input-group">
+            <input type="text" id="newStudentName" placeholder="Skriv elevens namn">
+            <div class="separator"></div>
+            <button id="addStudentButton" type="button" data-translate="addStudent">Lägg till</button>
+        </div>
+    </div>         
+
+    <div class="notes-wrapper">
+      <div class="notes-container">
+        <h2 id="notesLabel" class="field-label"></h2>
+        <div class="notes-button-container">
+          <textarea id="studentNotes" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="export-section">
+      <h2 id="exportTitle" class="field-label" data-translate="exportTitle"></h2>
+      <div class="export-button-container">
+        <div class="checkbox-group">
+          <div class="checkbox-text-wrapper">
+            <input type="checkbox" id="studentModeCheckbox" checked>
+            <label for="studentModeCheckbox" id="studentModeLabel" data-translate="studentModeLabel">Låsta guldstjärnor</label>
+          </div>
+          <button id="studentModeInfoButton" class="info-button" aria-label="Student Mode Info">ⓘ</button>
+        </div>
+        <button id="shareExportButton" class="share-button" data-translate="shareButtonExport" onclick="shareExport()">Dela via AirDrop / Meddelande / QR-kod</button>
+        <p class="info-text" data-translate="exportInfoText">Exporterar: Namn, Anteckningar & Stjärnor</p>
+        <p id="exportStatus" class="info-text" data-translate="exportStatus" style="display: none;"></p>
+      </div>
+    </div>
+
+    <div id="studentsLabel" class="field-label" data-translate="studentsLabel" style="margin-top: 0px !important;"></div>
+    <div class="dropdown-container">
+        <div class="input-group">
+            <select id="studentSelect"></select>
+            <div class="separator"></div>
+            <button id="removeStudentButton" type="button" data-translate="removeButton"></button>
+        </div>
+    </div> 
+
+    <div id="studentModeInfoPopup" class="popup" style="display: none;">
+  <div class="student-popup-content" onclick="event.stopPropagation();">
+    <button id="closeStudentModeInfoPopup" style="background: none; border: none; font-size: 24px; color: #ffd700; cursor: pointer; font-weight: bold;">×</button>
+    <p id="studentModeInfoText" data-translate="studentModeInfoText" style="padding: 10px;"></p>
+  </div>
+</div>
+
+    <div id="qrPopup" class="popup" style="display: none;" onclick="document.getElementById('qrPopup').style.display='none'; document.getElementById('qrPopup').classList.remove('show');">
+      <div class="student-popup-content" onclick="event.stopPropagation();" style="position: relative; flex-direction: column; align-items: center; padding: 25px;">
+        <button id="closeQrPopup" style="position: absolute; top: 1px; right: 1px; background: none; border: none; font-size: 24px; color: #ffd700; cursor: pointer; font-weight: bold;">×</button>
+        <div id="qrCodeContainer" style="margin: 0; padding-bottom: 15px; background: #000; border-radius: 10px;"></div>
+        <p id="qrInstruction" style="margin-bottom: 20px; color: white; text-align: center;" data-translate="scanOrShare">Scanna QR-koden eller...</p>
+        <button id="shareButtonInQR" class="share-button" data-translate="shareButtonQR">Dela via AirDrop / Meddelande</button>
+      </div>
+    </div>
+
+  </div>
+  <div id="studentPopup" class="student-popup">
+    <div class="student-popup-content">
+      <p id="studentPopupMessage"></p>
+    </div>
+  </div>
+  <div id="confirmRemovePopup" class="student-popup">
+    <div class="student-popup-content">
+        <button id="closeConfirmRemovePopup">×</button>
+        <p id="confirmRemoveMessage" data-translate="confirmRemoveMessage"></p>
+        <button id="confirmRemoveButton"></button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="students.js"></script>
+<script>
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+function saveNotes(silent = false) {
+  const studentNotes = document.getElementById('studentNotes');
+  const currentStudent = window.studentsData.currentStudent;
+
+  if (!currentStudent || !window.studentsData.students[currentStudent]) {
+    if (!silent) alert('Välj en elev först');
+    return;
+  }
+
+  window.studentsData.students[currentStudent].notes = studentNotes.value;
+  localStorage.setItem('starAcademyStudents', JSON.stringify(window.studentsData));
+  if (!silent) alert('Sparat!');
+}
+
+const debouncedSaveNotes = debounce(() => saveNotes(true), 500);
+
+function loadNotes() {
+  const select = document.getElementById('studentSelect');
+  const notes = document.getElementById('studentNotes');
+  const notesLabel = document.getElementById('notesLabel');
+  const data = JSON.parse(localStorage.getItem('starAcademyStudents')) || { students: {}, currentStudent: '' };
+  const lang = localStorage.getItem('language') || 'sv';
+
+  updateDropdown();
+
+  const current = data.currentStudent;
+  if (current && data.students[current] && data.students[current].notes) {
+    notes.value = data.students[current].notes;
+  } else {
+    notes.value = '';
+  }
+
+  if (notesLabel && translations[lang]) {
+    notesLabel.textContent = current ? `${translations[lang].notesTitle}${current}` : translations[lang].notesTitle;
+  }
+
+  if (select && current) select.value = current;
+}
+
+// Export function
+function shareExport() {
+  try {
+    const exportStatus = document.getElementById('exportStatus');
+    const qrPopup = document.getElementById('qrPopup');
+    const qrCodeContainer = document.getElementById('qrCodeContainer');
+    const shareButton = document.getElementById('shareButtonInQR');
+    const closeQrPopup = document.getElementById('closeQrPopup');
+    const studentModeCheckbox = document.getElementById('studentModeCheckbox');
+    const lang = localStorage.getItem('language') || 'sv';
+
+    if (!exportStatus || !qrPopup || !qrCodeContainer || !shareButton || !closeQrPopup || !studentModeCheckbox) {
+      console.error('Missing elements:', {
+        exportStatus: !!exportStatus,
+        qrPopup: !!qrPopup,
+        qrCodeContainer: !!qrCodeContainer,
+        shareButton: !!shareButton,
+        closeQrPopup: !!closeQrPopup,
+        studentModeCheckbox: !!studentModeCheckbox
+      });
+      alert('Error: Page elements not found.');
+      return;
+    }
+
+    exportStatus.style.display = 'block';
+    exportStatus.textContent = window.translations?.[lang]?.creatingLink || 'Generating link, please wait…';
+
+    const studentsData = JSON.parse(localStorage.getItem('starAcademyStudents')) || { students: {}, currentStudent: '' };
+    const current = studentsData.currentStudent;
+    if (!current || !studentsData.students[current]) {
+      console.warn('No current student selected');
+      exportStatus.style.display = 'none';
+      alert(window.translations?.[lang]?.exportError || 'Could not export student data.');
+      return;
+    }
+
+    const progressDigits = [];
+    for (let chapter = 1; chapter <= 7; chapter++) {
+      for (let part = 1; part <= 4; part++) {
+        for (let exercise = 1; exercise <= 4; exercise++) {
+          const key = `exercise${chapter}:${part}:${exercise}`;
+          progressDigits.push(studentsData.students[current].progress[key] || '0');
+        }
+      }
+    }
+    const dataToExport = {
+      name: current,
+      progress: progressDigits.join(''),
+      rank: studentsData.students[current].rank,
+      notes: studentsData.students[current].notes || '',
+      studentMode: studentModeCheckbox.checked
+    };
+
+    const jsonString = JSON.stringify(dataToExport);
+    console.log('Export JSON size:', jsonString.length, 'chars');
+    console.log('Export JSON:', jsonString);
+
+    if (!window.LZString) {
+      console.error('LZString not loaded');
+      alert('Error: Compression library missing.');
+      return;
+    }
+    const compressed = LZString.compressToEncodedURIComponent(jsonString);
+    console.log('Compressed code size:', compressed.length, 'chars');
+    const importUrl = `${window.location.origin}/ranks.html?code=${compressed}`;
+
+    if (!window.QRCode) {
+      console.error('QRCode not loaded');
+      alert('Error: QR code library missing.');
+      return;
+    }
+    qrCodeContainer.innerHTML = '';
+    new QRCode(qrCodeContainer, {
+      text: importUrl,
+      width: 270,
+      height: 270,
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+    qrPopup.style.display = 'flex';
+    qrPopup.classList.add('show');
+    exportStatus.style.display = 'none';
+
+    shareButton.onclick = async () => {
+      try {
+        if (navigator.share && navigator.canShare({ url: importUrl })) {
+          await navigator.share({ title: 'Elevdata', url: importUrl });
+        } else {
+          await navigator.clipboard.writeText(importUrl);
+          alert(window.translations?.[lang]?.copyLinkSuccess || 'Link copied to clipboard!');
+        }
+      } catch (err) {
+        console.error('Error sharing:', err);
+        await navigator.clipboard.writeText(importUrl);
+        alert(window.translations?.[lang]?.copyLinkSuccess || 'Link copied to clipboard!');
+      }
+    };
+
+    closeQrPopup.onclick = () => {
+      qrPopup.style.display = 'none';
+      qrPopup.classList.remove('show');
+    };
+  } catch (error) {
+    console.error('Export failed:', error);
+    exportStatus.style.display = 'none';
+    alert(window.translations?.[lang]?.exportError || 'Could not export student data.');
+  }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  const shareExportButton = document.getElementById('shareExportButton');
+  if (shareExportButton) {
+    shareExportButton.addEventListener('click', shareExport);
+  } else {
+    console.error('shareExportButton not found');
+  }
+
+  const lang = localStorage.getItem('language') || 'sv';
+  switchLanguage(lang);
+  loadNotes();
+
+  const newStudentInput = document.getElementById('newStudentName');
+  if (newStudentInput) {
+    newStudentInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        console.log('Enter key pressed on newStudentName');
+        addStudent(e);
+      }
+    });
+  }
+
+  const notes = document.getElementById('studentNotes');
+  if (notes) {
+    notes.addEventListener('input', () => debouncedSaveNotes());
+    notes.addEventListener('blur', () => saveNotes(true));
+  }
+
+  const studentSelect = document.getElementById('studentSelect');
+  if (studentSelect) {
+    studentSelect.addEventListener('change', (event) => {
+      const selectedValue = event.target.value;
+      switchStudent(selectedValue);
+    });
+  }
+
+  const infoButton = document.getElementById('studentModeInfoButton');
+  const infoPopup = document.getElementById('studentModeInfoPopup');
+  const closeInfoPopup = document.getElementById('closeStudentModeInfoPopup');
+  if (infoButton && infoPopup && closeInfoPopup) {
+    infoButton.addEventListener('click', () => {
+      infoPopup.style.display = 'flex';
+      infoPopup.classList.add('show');
+    });
+    closeInfoPopup.addEventListener('click', () => {
+      infoPopup.style.display = 'none';
+      infoPopup.classList.remove('show');
+    });
+    infoPopup.addEventListener('click', () => {
+      infoPopup.style.display = 'none';
+      infoPopup.classList.remove('show');
+    });
+  }
+});
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93afb610cfc4bf91',t:'MTc0NjQ0MjU4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<div id="consentPopup" style="display: none;">
+    <div class="consent-popup-content">
+        <p id="consentMessage"></p>
+        <div class="consent-buttons">
+            <button id="consentAcceptButton"></button>
+            <button id="consentRejectButton"></button>
+            <button id="consentPolicyLink" data-translate="consentPolicyLink"></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title data-translate="homeTitle">Nordstjärnans Pianoskola - Startsida</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
+  <link rel="stylesheet" href="cookieconsent.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+  <script>
+    function setViewportHeight() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    window.addEventListener('resize', setViewportHeight);
+    window.addEventListener('orientationchange', setViewportHeight);
+    setViewportHeight();
+  </script>
+</head>
+<body class="allow-scroll">
+  <div class="piano-menu" id="menuButton" aria-expanded="false" aria-controls="main-menu">
+    <div class="white-key"></div>
+    <div class="white-key"></div>
+    <div class="white-key"></div>
+    <div class="black-key top"></div>
+    <div class="black-key bottom"></div>
+  </div>
+  <nav id="menu-placeholder"></nav>
+  <div class="layout-container" style="background-color: black; color: white; text-align: center; display: flex; flex-direction: column; align-items: center; padding: 20px;">
+    <h1 data-translate="homeWelcome" style="color: white; margin-bottom: 20px;"></h1>
+    <a id="appleBooksLink" href="#" class="menu-link apple-books-button" data-translate="appleBooksText"></a>
+    <div class="video-wrapper">
+  <iframe
+    id="index-video"
+    class="responsive-video"
+    src="https://player.vimeo.com/video/1106485252?autoplay=1&muted=1&loop=1&autopause=0&playsinline=1"
+    data-vimeo-id="1106485252"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+    allowfullscreen
+    style="display: block;"
+  ></iframe>
+  <a href="https://vimeo.com/1106485252" class="video-fallback-link" title="Watch North Star Piano School on Vimeo" style="display: none;">
+    <img src="videoimg.png" alt="North Star Piano School Video" class="responsive-video-img">
+    <div class="play-button"></div>
+  </a>
+</div>
+  </div>
+  
+  <div id="consentPopup" style="display: none;">
+    <div class="consent-popup-content">
+      <p id="consentMessage"></p>
+      <div class="consent-buttons">
+        <button id="consentAcceptButton"></button>
+        <button id="consentRejectButton"></button>
+        <button id="consentPolicyLink" data-translate="consentPolicyLink"></button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script src="students.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initializeConsentPopup === 'function') {
+            initializeConsentPopup();
+        }
+
+        function updateAppleBooksLink(lang) {
+            const appleBooksLink = document.getElementById('appleBooksLink');
+            if (appleBooksLink) {
+                const urls = {
+                    sv: 'https://books.apple.com/se/book/stj%C3%A4rnakademiens-pianoskola/id1586033171',
+                    en: 'https://books.apple.com/se/book/star-academy-piano-school/id1587056173'
+                };
+                appleBooksLink.href = urls[lang] || urls.sv;
+            }
+        }
+
+        const lang = localStorage.getItem('language') || 'sv';
+        updateAppleBooksLink(lang);
+
+        const originalSwitchLanguage = window.switchLanguage;
+        window.switchLanguage = function(newLang) {
+            originalSwitchLanguage(newLang);
+            updateAppleBooksLink(newLang);
+        };
+
+        // Video and fallback handling
+        const videoIframe = document.getElementById('index-video');
+        const fallbackLink = document.querySelector('.video-fallback-link');
+        if (videoIframe && fallbackLink) {
+            const videoPlayer = new Vimeo.Player(videoIframe);
+
+            videoPlayer.on('error', (error) => {
+                console.error('Vimeo player error:', error);
+                videoIframe.style.display = 'none';
+                fallbackLink.style.display = 'block';
+            });
+
+            videoPlayer.getPaused().then(paused => {
+                if (paused) {
+                    videoPlayer.play().catch(err => {
+                        console.error('Autoplay failed:', err);
+                        videoIframe.style.display = 'none';
+                        fallbackLink.style.display = 'block';
+                    });
+                }
+            });
+
+            // Optional: Check if video is loaded and visible
+            videoPlayer.on('loaded', () => {
+                console.log('Vimeo player loaded for video:', videoIframe.dataset.vimeoId);
+            });
+        }
+    });
+</script>
+</body>
+</html>
