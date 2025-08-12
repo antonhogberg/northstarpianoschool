@@ -8,6 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
   <link rel="stylesheet" href="cookieconsent.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+  
   <script>
     function setViewportHeight() {
       let vh = window.innerHeight * 0.01;
@@ -17,6 +18,37 @@
     window.addEventListener('orientationchange', setViewportHeight);
     setViewportHeight();
   </script>
+  <script>
+(function () {
+  function getParam(name){
+    try { return new URL(window.location.href).searchParams.get(name); }
+    catch(e){ return null; }
+  }
+
+  var host = (location.hostname || "").toLowerCase();
+  var ref  = (document.referrer || "").toLowerCase();
+  var qp   = (getParam('lang') || "").toLowerCase();
+  var lang = null;
+
+  // Standard: svenska domänen → svenska, men ?lang/en eller ref från engelska domänen vinner
+  if (host.includes("pianoskola.com")) {
+    lang = qp ? qp : (ref.includes("northstarpianoschool.com") ? "en" : "sv");
+  }
+  // Om du i framtiden kör direkt på engelska domänen
+  else if (host.includes("northstarpianoschool.com")) {
+    lang = qp || "en";
+  }
+  // Annars: query-param → tidigare val → default sv
+  else {
+    lang = qp || (localStorage.getItem("language") || "sv");
+  }
+
+  try { localStorage.setItem("language", lang); } catch(e){}
+  document.documentElement.setAttribute("lang", lang);
+  window.__preferredLang = lang; // tillgänglig för senare skript
+})();
+</script>
+
 </head>
 <body class="allow-scroll">
   <div class="piano-menu" id="menuButton" aria-expanded="false" aria-controls="main-menu">
@@ -79,6 +111,10 @@
 
         const lang = localStorage.getItem('language') || 'sv';
         updateAppleBooksLink(lang);
+
+        if (typeof window.switchLanguage === 'function') {
+        window.switchLanguage(lang);
+        }
 
         const originalSwitchLanguage = window.switchLanguage;
         window.switchLanguage = function(newLang) {
