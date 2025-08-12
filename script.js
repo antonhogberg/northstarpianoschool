@@ -324,7 +324,7 @@ const translations = {
         noConsentOptOut: "Denna plattform kräver lokal lagring för att spåra dina framsteg, vilket är nödvändigt för dess funktionalitet. Om du inte samtycker kan du inte använda plattformen. Vänligen acceptera integritetspolicyn för att fortsätta eller välj att inte använda webbplatsen",
         practiceStreak: "Övningsstreak:",
         daysInRow: "dagar i rad.",
-        totalGoldStars: "Totala guldstjärnor intjänade:",
+        totalGoldStars: "Guldstjärnor intjänade:",
         rankBadgePopupTitle: "Så fungerar rangmärket",
         rankBadgePopupText: "Rangmärket visar dina framgångar! Det nedre fältet har 16 små stjärnor som tänds en efter en när du slutför övningar genom att få sex guldstjärnor per övning. Gå till Stjärnkartan eller Kapitel 1-7 i menyn för att klicka fram dina guldstjärnor. Slutför 16 övningar för att bli <strong>Stjärnkadett</strong>! Ditt nästa mål är första chevronen, med sju stora stjärnor. Dessa tänds när du slutför alla fyra övningar i Del 1 i varje Kapitel (totalt sju kapitel). Bemästra dem alla för att uppnå rangen <strong>Stjärnofficer</strong>!",
         closeButton: "Stäng",
