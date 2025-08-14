@@ -2068,8 +2068,6 @@ h2#popupWelcome {
     border-radius: 10px;
     text-align: center;
     border: 3px solid #ff0000;
-    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
-    animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
