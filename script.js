@@ -110,11 +110,11 @@ const translations = {
         removeCurrentStudentNone: "Remove current student: None",
         starMapDescription: "Welcome to the Star Map! Click on each star to track your progress in North Star Piano School. Earn up to six stars per exercise by practicing in the Piano School. Scroll to explore all chapters and exercises.",
         starMapTitle: "Using the Star Map",
-        starMapBullet1: "<strong>Start with Star 1:1:1:</strong> In North Star Piano School, navigate to the corresponding exercise. Star codes are formatted as Chapter:Part:Exercise (e.g., 1:1:1 is Chapter 1, Part 1, Exercise 1).",
-        starMapBullet2: "<strong>Earn Stars:</strong> Follow the book’s instructions to complete the exercise and earn stars. Return to the Star Map, click Star 1:1:1 to claim your stars. If you over-click, keep clicking to reset.",
-        starMapBullet3: "<strong>Progress Gradually:</strong> Practice an exercise, then move to the next star on the map.",
-        starMapBullet4: "<strong>Daily Practice:</strong> Each day, revisit your active exercises, aiming for six stars in each.",
-        starMapBullet5: "<strong>Manage Active Exercises:</strong> Work on 4-6 exercises daily, but try to complete exercise 1:1:1 (six stars) before starting 1:1:2, finish 2:1:1 before starting 2:1:2. But, if you get stuck, move to the next exercise and return to the former after a while.",
+        starMapBullet1: "<strong>Lesson plan:</strong> With beginners I usually start with Chapters 1 & 2. Those who have progressed a bit further also begin Chapters 3 & 5, and once they’ve completed 5:1:1 we start Chapter 6 as well. Chapter 4 (minor scales) is started when the student wants a change from the major scales. Use at most 30–40% of the lesson time to check the exercises assigned as homework and, if they are completely done with an exercise (6 gold stars), shortly introduce the next exercise. The bulk repetition on the exercises should be done at home so that most of the lesson time can be spent on Chapter 7 (Repertoire) or other pieces. In Chapter 1 it’s helpful to sneak-start Part 4 (Rhythm) early. If the student needs a break from Part 1 (Keys) or Part 2 (Notes), spend a couple of weeks on Part 4 instead. Likewise with Chapter 2’s Part 2 (Pedals).",
+        starMapBullet2: "<strong>Start with star 1:1:1:</strong> Navigate to exercise 1:1:1 in The North Star Piano School. The number codes are written as Chapter:Part:Exercise (e.g., 1:1:1 is Chapter 1, Part 1, Exercise 1). Follow the book’s instructions to complete the exercise and earn gold stars. Return to the Star Map and click star 1:1:1 to display your gold stars. If you click too many, keep clicking to reset.",
+        starMapBullet3: "<strong>Homework:</strong> The teacher clicks the chapters the student has for homework so they glow in gold. When students import their users on their iPads, they see which chapters are assigned for homework based on which ones are glowing.",
+        starMapBullet4: "<strong>Daily practice:</strong> Work on all the glowing chapters for a while each day. When you reach the sixth star in an exercise, continue with the next exercise in that chapter.",
+        starMapBullet5: "<strong>See your rank:</strong> Click Star Overview in the menu to see your rank. The more exercises in which you earn six stars, the higher your rank!",
         loading: "Loading student data...",
         success: "Your stars are updated, welcome",
         error: "Invalid link. No student was added.",
@@ -275,11 +275,11 @@ const translations = {
         removeCurrentStudentNone: "Radera aktuell elev: ingen",
         starMapDescription: "Välkommen till Stjärnkartan! Klicka på varje stjärna för att följa dina framsteg i Nordstjärnans Pianoskola. Förtjäna upp till sex guldstjärnor per övning genom att öva i pianoskolan. Scrolla för att utforska alla kapitel och övningar.",
         starMapTitle: "Såhär använder du Stjärnkartan",
-        starMapBullet1: "<strong>Börja med stjärna 1:1:1:</strong> navigera till övning 1:1:1 i Nordstjärnans Pianoskola. Sifferkoder anges som Kapitel:Del:Övning (t.ex. 1:1:1 är Kapitel 1, Del 1, Övning 1).",
-        starMapBullet2: "<strong>Förtjäna guldstjärnor:</strong> följ bokens instruktioner för att slutföra övningen och få guldstjärnor. Återvänd till Stjärnkartan, klicka på stjärna 1:1:1 för att få fram dina guldstjärnor. Klickar du för många, fortsätt klicka för att nollställa.",
-        starMapBullet3: "<strong>Öva lagom:</strong> öva på en övning en stund, gå sedan vidare till nästa stjärna på kartan.",
-        starMapBullet4: "<strong>Daglig övning:</strong> återkom till dina aktiva övningar varje dag och sikta på sex guldstjärnor i varje.",
-        starMapBullet5: "<strong>Hur många aktiva övningar?:</strong> jobba på flera övningar dagligen, t.ex. 4–6 st, men försök slutföra övning 1:1:1 (med sex guldstjärnor) innan du påbörjar övning 1:1:2; slutför övning 2:1:1 innan du påbörjar övning 2:1:2 o.s.v. Men känner du att du kör fast, gå vidare till nästa övning och återkom till den förra efter ett tag igen.",
+        starMapBullet1: "<strong>Lektionsupplägg:</strong> Med nybörjare brukar jag börja med Kapitel 1 & 2. De som kommit lite längre får även påbörja Kapitel 3 & 5 och när de klarat 5:1:1 börjar vi på Kapitel 6 också. Kapitel 4 (mollskalor) startas när eleven vill ha omväxling från durskalorna. Använd max 30-40% av lektionstiden för att kontrollera övningarna eleven haft i läxa och ev. introducera nästa övning om de är helt klara med en uppgift (6 guldstjärnor). Mängdövningen på övningarna får eleven göra hemma så att större delen av lektionstiden kan läggas på Kapitel 7 (Repertoar) eller andra stycken. I Kapitel 1 är det nyttigt att smygstarta Del 4 (Rytm) tidigt. Behöver eleven en paus från Del 1 (Tangenter) eller Del 2 (Noter) så lägg ett par veckor på Del 4 istället. Likadant med Kapitel 2’s Del 2 (Pedaler).",
+        starMapBullet2: "<strong>Börja med stjärna 1:1:1:</strong> Navigera till övning 1:1:1 i Nordstjärnans Pianoskola. Sifferkoder anges som Kapitel:Del:Övning (t.ex. 1:1:1 är Kapitel 1, Del 1, Övning 1). Följ bokens instruktioner för att slutföra övningen och få guldstjärnor. Återvänd till Stjärnkartan, klicka på stjärna 1:1:1 för att få fram dina guldstjärnor. Klickar du fram för många, fortsätt klicka för att nollställa.",
+        starMapBullet3: "<strong>Läxa:</strong> Läraren klickar på de kapitel som eleven har i läxa så att de lyser i guld. När eleverna importerar sina användare på sina iPads så ser de vilka kapitel de har i läxa, utifrån vilka som lyser.",
+        starMapBullet4: "<strong>Daglig övning:</strong> Jobba med alla lysande kapitel en stund varje dag. Når du den stjätte stjärnan i en övning, fortsätt då med nästa övning i det kapitlet.",
+        starMapBullet5: "<strong>Se din rang:</strong> Klicka på Stjärnöversikt i menyn för att se din rang. Ju fler övningar du får sex stjärnor i, desto mer ökar du i rang!",
         loading: "Laddar elevdata...",
         success: "Dina framgångar är uppdaterade, välkommen",
         error: "Ogiltig länk. Ingen elev lades till.",
@@ -1773,9 +1773,9 @@ waitForDOM().then(() => {
     if (!window.isImporting) window.initializeAppContent();
 
     if (path.includes('ranks.html')) {
-    initializeRankBadgePopup();
-    if (typeof initializeFrontPage === 'function') initializeFrontPage();
-}
+        initializeRankBadgePopup();
+        if (typeof initializeFrontPage === 'function') initializeFrontPage();
+    }
 
     if (path.includes('starmap.html')) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -1806,10 +1806,17 @@ waitForDOM().then(() => {
             const threshold = 50;
             let isInitialScroll = true;
 
-            setTimeout(() => {
-                starMapContainer.scrollTo({ left: scrollTarget, behavior: 'smooth' });
-                setTimeout(() => isInitialScroll = false, 500);
-            }, 100);
+            // 🔧 Only do the initial scroll when the hash equals '#svg-start',
+            // and do it after the height settle (your setter runs at 200ms).
+            if (window.location.hash === '#svg-start') {
+                setTimeout(() => {
+                    starMapContainer.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+                    setTimeout(() => (isInitialScroll = false), 500);
+                }, 250);
+            } else {
+                // No hash → don't auto-scroll, and allow overlay logic immediately
+                isInitialScroll = false;
+            }
 
             window.starMapScrollListener = () => {
                 if (isInitialScroll) return;
@@ -1832,7 +1839,10 @@ waitForDOM().then(() => {
             infoOverlay.addEventListener('click', window.infoOverlayClickListener);
 
             setTimeout(() => {
-                if (Math.abs(starMapContainer.scrollLeft - scrollTarget) < threshold && localStorage.getItem('infoOverlayHidden') === 'false') {
+                if (
+                    Math.abs(starMapContainer.scrollLeft - scrollTarget) < threshold &&
+                    localStorage.getItem('infoOverlayHidden') === 'false'
+                ) {
                     infoOverlay.classList.remove('hidden');
                 }
             }, 600);
@@ -1888,53 +1898,52 @@ waitForDOM().then(() => {
 
     const setStarMapHeight = () => {
         const starMapContainer = document.querySelector('.star-map-container');
-        const titleContainer = document.querySelector('.title-container');
-        const body = document.querySelector('body');
-        if (starMapContainer && titleContainer && body) {
-            if (!window.initialTitleHeight) {
-                window.initialTitleHeight = titleContainer.getBoundingClientRect().height;
-            }
-            const titleHeight = window.initialTitleHeight;
-            const marginTop = 10;
-            const borderWidth = parseFloat(getComputedStyle(starMapContainer).borderWidth) || 0;
-            const bodyBorderWidth = parseFloat(getComputedStyle(body).borderWidth) || 0;
-            const totalBorderHeight = borderWidth * 2;
-            const totalBodyBorderHeight = bodyBorderWidth * 2;
-            const viewportHeight = window.innerHeight;
-            const topPosition = titleHeight + marginTop;
-            const availableHeight = viewportHeight - topPosition - totalBorderHeight - totalBodyBorderHeight - 10;
-            const maxHeight = Math.min(600, availableHeight);
-            const isMobile = window.matchMedia("(max-width: 767px) and (orientation: portrait)").matches;
-            const isIPad = window.matchMedia("(min-width: 768px) and (max-width: 1400px) and (orientation: landscape)").matches;
-            if (isIPad) {
-                const gap = 20;
-                const adjustedTop = titleHeight + gap;
-                const adjustedHeight = viewportHeight - adjustedTop - gap - totalBodyBorderHeight;
-                starMapContainer.style.height = `${adjustedHeight}px`;
-                starMapContainer.style.top = `${adjustedTop}px`;
-                starMapContainer.style.bottom = `${gap + bodyBorderWidth}px`;
-            } else if (isMobile) {
-                starMapContainer.style.height = `${maxHeight}px`;
-                starMapContainer.style.top = `${topPosition}px`;
-                starMapContainer.style.bottom = 'auto';
-            } else {
-                starMapContainer.style.height = `${maxHeight}px`;
-                starMapContainer.style.top = `${topPosition}px`;
-                starMapContainer.style.bottom = 'auto';
-            }
-            starMapContainer.style.position = 'fixed';
-            starMapContainer.style.transform = 'none';
+        const titleContainer  = document.querySelector('.title-container');
+        const body            = document.body;
+        if (!starMapContainer || !titleContainer || !body) return;
 
-            const starMapSvg = starMapContainer.querySelector('svg');
-            if (starMapSvg) {
-                if (isMobile) {
-                    starMapSvg.style.height = '100%';
-                    starMapSvg.style.width = 'auto';
-                } else {
-                    starMapSvg.style.height = `${starMapContainer.clientHeight - totalBorderHeight}px`;
-                    starMapSvg.style.width = '2780px';
-                }
-            }
+        if (!window.initialTitleHeight) {
+            window.initialTitleHeight = titleContainer.getBoundingClientRect().height;
+        }
+        const titleHeight = window.initialTitleHeight;
+
+        const viewportHeight = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+
+        const marginTop = 10;
+        const gap = 20;
+        const topBase = titleHeight + marginTop;
+
+        const bodyBorderWidth = parseFloat(getComputedStyle(body).borderWidth) || 0;
+        const containerBorderWidth = parseFloat(getComputedStyle(starMapContainer).borderWidth) || 0;
+        const totalBodyBorder = bodyBorderWidth * 2;
+        const totalContainerBorder = containerBorderWidth * 2;
+
+        const isMobilePortrait = window.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+        const isIPadLandscape  = window.matchMedia('(min-width: 768px) and (max-width: 1400px) and (orientation: landscape)').matches;
+
+        if (isIPadLandscape) {
+            const adjustedTop    = titleHeight + gap;
+            const adjustedHeight = viewportHeight - adjustedTop - gap - totalBodyBorder;
+            starMapContainer.style.top    = `${adjustedTop}px`;
+            starMapContainer.style.height = `${Math.max(0, adjustedHeight)}px`;
+            starMapContainer.style.bottom = `${gap + bodyBorderWidth}px`;
+        } else {
+            const availableHeight = viewportHeight - topBase - totalBodyBorder - 10;
+            starMapContainer.style.top    = `${topBase}px`;
+            starMapContainer.style.height = `${Math.max(0, availableHeight)}px`;
+            starMapContainer.style.bottom = 'auto';
+        }
+
+        starMapContainer.style.position  = 'fixed';
+        starMapContainer.style.transform = 'none';
+        starMapContainer.scrollTop = 0;
+
+        const starMapSvg = starMapContainer.querySelector('svg#starMap');
+        if (starMapSvg) {
+            starMapSvg.removeAttribute('width');
+            starMapSvg.removeAttribute('height');
+            starMapSvg.style.width  = 'auto';
+            starMapSvg.style.height = '100%';
         }
     };
 
@@ -1955,23 +1964,16 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   function ensureFaqArrows() {
     document.querySelectorAll('.faq-question').forEach(q => {
-      // If the translator replaced the innerHTML, we may have lost the arrow.
       if (!q.querySelector('.faq-arrow')) {
         q.insertAdjacentHTML('beforeend', ' <span class="faq-arrow">▼</span>');
       }
     });
   }
-
-  // 1) Run once when the DOM is ready
   document.addEventListener('DOMContentLoaded', ensureFaqArrows);
-
-  // 2) Watch for any content changes (e.g., when language switches) and fix again
   const faqContainer = document.querySelector('.faq-container');
   if (faqContainer) {
     const mo = new MutationObserver(() => ensureFaqArrows());
     mo.observe(faqContainer, { childList: true, subtree: true, characterData: true });
   }
-
-  // 3) If your code dispatches a custom event after language changes, hook it too
   document.addEventListener('languageChanged', ensureFaqArrows);
 })();

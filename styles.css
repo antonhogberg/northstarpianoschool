@@ -1567,18 +1567,18 @@ body.popup-open .content {
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(var(--vh, 1vh) * 100 - 70px);
     flex-shrink: 0;
     white-space: nowrap;
     display: flex;
 }
 
 .star-map-container svg {
-    width: 2800px;
     height: 100% !important;
+    width: auto;
     display: block;
     position: relative;
-    left: 500px; /* Offset to account for the description width */
+    left: 600px; /* Offset to account for the description width */
 }
 
 .star-map-container svg#starMap {
@@ -1760,7 +1760,7 @@ h2#popupWelcome {
     }
 
     .star-map-container svg {
-        left: 300px; /* Smaller offset for smaller screens */
+        left: 340px; /* Smaller offset for smaller screens */
     }
 
     .student-manager .checkbox-group {
@@ -1832,7 +1832,6 @@ h2#popupWelcome {
     .star-map-container {
         top: 50px;/* Miscellaneous Styles */
         height: calc(100vh - 50px);
-        max-height: 960px;
     }
     .congratulations-overlay {
         position: fixed;
@@ -2964,7 +2963,6 @@ h2#popupWelcome {
     .star-map-container {
         top: 50px;
         height: calc(100vh - 50px);
-        max-height: 960px;
     }
 }
 
@@ -2977,7 +2975,6 @@ h2#popupWelcome {
     .star-map-container {
         top: 50px;
         height: calc(100vh - 50px);
-        max-height: 960px;
     }
 }
 
@@ -3127,6 +3124,17 @@ body.allow-scroll.no-scroll {
     margin-top: 0;
 }
 
+/* Chapter title styles for starmap clickability and glow effect */
+.star-map-container text.chapter-title {
+    cursor: pointer;
+    transition: text-shadow 0.3s ease, fill 0.3s ease;
+}
+
+.star-map-container text.chapter-title[filter="url(#text-glow)"] {
+    text-shadow: 0 0 8px var(--gold), 0 0 12px var(--gold);
+    fill: var(--gold);
+}
+
 /* Apple Books-knapp */
 .apple-books-button {
     display: inline-block;
@@ -3159,6 +3167,12 @@ body.allow-scroll.no-scroll {
 }
 /* Mobile portrait (max-width: 767px) */
 @media (max-width: 767px) and (orientation: portrait) {
+    .star-map-container text.chapter-title {
+        font-size: 20px;
+    }
+    .star-map-container text.chapter-title[filter="url(#text-glow)"] {
+        text-shadow: 0 0 6px var(--gold), 0 0 10px var(--gold);
+    }
   .video-wrapper {
         width: 90vw;
         max-width: 90vw;

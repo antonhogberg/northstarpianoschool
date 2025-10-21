@@ -1,0 +1,2608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title data-translate="menuStarMap"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cookieconsent.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+    <script>
+        function setViewportHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        window.addEventListener('resize', setViewportHeight);
+        window.addEventListener('orientationchange', setViewportHeight);
+        setViewportHeight();
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof initializeConsentPopup === 'function') {
+            initializeConsentPopup();
+        }
+    });
+    </script>
+</head>
+<body class="no-scroll">
+    <div class="piano-menu" id="menuButton" aria-expanded="false" aria-controls="main-menu">
+        <div class="white-key"></div>
+        <div class="white-key"></div>
+        <div class="white-key"></div>
+        <div class="black-key top"></div>
+        <div class="black-key bottom"></div>
+    </div>
+    <nav id="menu-placeholder"></nav>
+    <div class="title-container">
+        <img src="gold6_silver0.png" alt="Stars" class="title-star">
+        <h1 data-translate="menuStarMap">Stjärnkartan</h1>
+        <img src="gold6_silver0.png" alt="Stars" class="title-star">
+    </div>
+    <div id="namePopup" class="popup" style="display: none;">
+      <div class="popup-content">
+          <div class="popup-scrollable-content">
+              <h2 id="popupWelcome"></h2>
+              <p id="popupIntro"></p>
+              <div class="rank-badge-container">
+                  <img src="rank-start.png" alt="Explorer Rank Badge" class="rank-badge-image">
+              </div>
+              <p id="popupTeacherNote"></p>
+              <p id="popupEnterName"></p>
+          </div>
+          <div class="input-group">
+              <input type="text" id="nameInput">
+              <button id="submitNameButton" onclick="saveName()"></button>
+          </div>
+      </div>
+  </div>
+  <div id="rankAchievementPopup" class="popup" style="display: none;">
+    <div class="popup-content" onclick="event.stopPropagation();">
+        <div class="popup-scrollable-content">
+            <h2 id="rankAchievementMessage"></h2>
+            <h3 id="rankAchievementSubtitle"></h3> <!-- Add for the second line -->
+            <div class="rank-badge-container">
+                <img src="rank0.png" alt="Star Cadet Rank Badge" class="rank-badge-image" onerror="this.src='rank-start.png';">
+            </div>
+            <p id="rankAchievementDescription"></p>
+        </div>
+        <button id="closeRankPopup" class="close-button">×</button>
+    </div>
+  </div>
+  <div class="star-map-container">
+      <div class="description-container">
+        <h3 data-translate="starMapTitle">Using the Star Map</h3>
+        <div class="star-map-steps">
+          <p data-translate="starMapBullet1"><strong>Start with Star 1:1:1:</strong> In Star Academy Piano School, navigate to the corresponding exercise. Star codes are formatted as Chapter:Part:Exercise (e.g., 1:1:1 is Chapter 1, Part 1, Exercise 1).</p>
+          <p data-translate="starMapBullet2"><strong>Earn Stars:</strong> Follow the book’s instructions to complete the exercise and earn stars. Return to the Star Map, click Star 1:1:1 to claim your stars. If you over-click, keep clicking to reset.</p>
+          <p data-translate="starMapBullet3"><strong>Progress Gradually:</strong> Practice an exercise, then move to the next star on the map.</p>
+          <p data-translate="starMapBullet4"><strong>Daily Practice:</strong> Each day, revisit your active exercises, aiming for six stars in each.</p>
+          <p data-translate="starMapBullet5"><strong>Manage Active Exercises:</strong> Work on 4–6 exercises daily, but focus on completing each (six stars) before adding more.</p>
+        </div>
+      </div>
+        <a id="svg-start" xlink:href="#"></a>
+<svg
+   viewBox="20 0 2780 600"
+   version="1.1"
+   id="starMap"
+   xml:space="preserve"
+   sodipodi:docname="starmap.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <sodipodi:namedview
+   id="namedview1"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="px"
+   showgrid="true"
+   inkscape:zoom="0.97764085"
+   inkscape:cx="355.95894"
+   inkscape:cy="304.81541"
+   inkscape:window-width="1440"
+   inkscape:window-height="795"
+   inkscape:window-x="0"
+   inkscape:window-y="25"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="layer1"
+   showguides="false">
+     <inkscape:grid
+   id="grid1"
+   units="px"
+   originx="0"
+   originy="0"
+   spacingx="1"
+   spacingy="1"
+   empcolor="#0099e5"
+   empopacity="0.30196078"
+   color="#0099e5"
+   opacity="0.14901961"
+   empspacing="5"
+   enabled="true"
+   visible="true" />
+   </sodipodi:namedview>
+  <defs id="defs1">
+  <filter id="golden-glow" x="0" y="0" width="2800" height="600" filterUnits="userSpaceOnUse">
+    <feGaussianBlur stdDeviation="1" result="blur1" in="SourceAlpha" />
+    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0 0 0 0 1 0" result="glow1" in="blur1" />
+    <feComponentTransfer in="glow1" result="glow1Enhanced">
+      <feFuncA type="linear" slope="3" intercept="0" />
+    </feComponentTransfer>
+    <feGaussianBlur stdDeviation="3" result="blur2" in="SourceAlpha" />
+    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0 0 0 0 0.5 0" result="glow2" />
+    <feComponentTransfer in="glow2" result="glow2Enhanced">
+      <feFuncA type="linear" slope="2" intercept="0" />
+    </feComponentTransfer>
+    <feMerge>
+      <feMergeNode in="glow2Enhanced" />
+      <feMergeNode in="glow1Enhanced" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+  <filter id="text-glow" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox">
+    <feGaussianBlur stdDeviation="2" in="SourceGraphic" result="blur"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0 0 0 0 0.6 0" in="blur" result="glow"/>
+    <feComponentTransfer in="glow" result="glowEnhanced">
+      <feFuncA type="linear" slope="1.2" intercept="0"/>
+    </feComponentTransfer>
+    <feMerge>
+      <feMergeNode in="glowEnhanced"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+<g
+   inkscape:groupmode="layer"
+   id="layer3"
+   inkscape:label="Text" />
+   <g
+   inkscape:label="Stars"
+   inkscape:groupmode="layer"
+   id="layer1">
+     <!-- Chapter 1 -->
+     <g
+   id="chapter-1">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.142"
+   y="110"
+   id="label-1-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-1-1-1"
+     x="319.142"
+     y="110">1:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-1-1"
+   x="280"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.142"
+   y="110"
+   id="label-1-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-1-1-2"
+     x="459.142"
+     y="110">1:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-1-2"
+   x="420"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.14203"
+   y="110"
+   id="label-1-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-1-1-3"
+     x="599.14203"
+     y="110">1:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-1-3"
+   x="560"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.14203"
+   y="110"
+   id="label-1-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-1-1-4"
+     x="739.14203"
+     y="110">1:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-1-4"
+   x="700"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.14203"
+   y="110"
+   id="label-1-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-1-2-1"
+     x="879.14203"
+     y="110">1:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-2-1"
+   x="840"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.142"
+   y="110"
+   id="label-1-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-1-2-2"
+     x="1019.142"
+     y="110">1:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-2-2"
+   x="980"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.142"
+   y="110"
+   id="label-1-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-1-2-3"
+     x="1159.142"
+     y="110">1:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-2-3"
+   x="1120"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.142"
+   y="110"
+   id="label-1-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-1-2-4"
+     x="1299.142"
+     y="110">1:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-2-4"
+   x="1260"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.142"
+   y="110"
+   id="label-1-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-1-3-1"
+     x="1439.142"
+     y="110">1:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-3-1"
+   x="1400"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.142"
+   y="110"
+   id="label-1-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-1-3-2"
+     x="1579.142"
+     y="110">1:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-3-2"
+   x="1540"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.142"
+   y="110"
+   id="label-1-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-1-3-3"
+     x="1719.142"
+     y="110">1:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-3-3"
+   x="1680"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.142"
+   y="110"
+   id="label-1-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-1-3-4"
+     x="1859.142"
+     y="110">1:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-3-4"
+   x="1820"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.142"
+   y="110"
+   id="label-1-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-1-4-1"
+     x="1999.142"
+     y="110">1:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-4-1"
+   x="1960"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.1421"
+   y="110"
+   id="label-1-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-1-4-2"
+     x="2139.1421"
+     y="110">1:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-4-2"
+   x="2100"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.1421"
+   y="110"
+   id="label-1-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-1-4-3"
+     x="2279.1421"
+     y="110">1:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-4-3"
+   x="2240"
+   y="30"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.1421"
+   y="110"
+   id="label-1-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-1-4-4"
+     x="2419.1421"
+     y="110">1:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-1-4-4"
+   x="2380"
+   y="30"
+   inkscape:svg-dpi="96" />
+</g><g id="chapters">
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="76.556915"
+          id="title-1"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0"
+            x="124.8333"
+            y="76.556915">Kapitel 1</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="156.55692"
+          id="title-2"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4"
+            x="124.8333"
+            y="156.55692">Kapitel 2</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="236.55692"
+          id="title-3"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4-4"
+            x="124.8333"
+            y="236.55692">Kapitel 3</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="316.55692"
+          id="title-4"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4-3"
+            x="124.8333"
+            y="316.55692">Kapitel 4</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="396.55692"
+          id="title-5"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4-49"
+            x="124.8333"
+            y="396.55692">Kapitel 5</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="476.55692"
+          id="title-6"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4-49-3"
+            x="124.8333"
+            y="476.55692">Kapitel 6</tspan></text>
+        <text
+          xml:space="preserve"
+          style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:53.3333px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-linecap:square;stroke-opacity:1;cursor:pointer;pointer-events:all;"
+          x="124.8333"
+          y="556.55695"
+          id="title-7"
+          class="chapter-title"><tspan
+            sodipodi:role="line"
+            id="tspan-1-1-1-0-4-49-3-4"
+            x="124.8333"
+            y="556.55695">Kapitel 7</tspan></text>
+      </g>
+<g
+   id="chapter-2"
+   transform="translate(70)">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.30399"
+   y="190"
+   id="label-2-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-2-1-1"
+     x="319.30399"
+     y="190">2:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-1-1"
+   x="280"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.30399"
+   y="190"
+   id="label-2-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-2-1-2"
+     x="459.30399"
+     y="190">2:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-1-2"
+   x="420"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.30414"
+   y="190"
+   id="label-2-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-2-1-3"
+     x="599.30414"
+     y="190">2:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-1-3"
+   x="560"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.30414"
+   y="190"
+   id="label-2-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-2-1-4"
+     x="739.30414"
+     y="190">2:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-1-4"
+   x="700"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.30414"
+   y="190"
+   id="label-2-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-2-2-1"
+     x="879.30414"
+     y="190">2:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-2-1"
+   x="840"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.3039"
+   y="190"
+   id="label-2-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-2-2-2"
+     x="1019.3039"
+     y="190">2:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-2-2"
+   x="980"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.3042"
+   y="190"
+   id="label-2-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-2-2-3"
+     x="1159.3042"
+     y="190">2:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-2-3"
+   x="1120"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.3042"
+   y="190"
+   id="label-2-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-2-2-4"
+     x="1299.3042"
+     y="190">2:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-2-4"
+   x="1260"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.3042"
+   y="190"
+   id="label-2-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-2-3-1"
+     x="1439.3042"
+     y="190">2:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-3-1"
+   x="1400"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.3042"
+   y="190"
+   id="label-2-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-2-3-2"
+     x="1579.3042"
+     y="190">2:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-3-2"
+   x="1540"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.3042"
+   y="190"
+   id="label-2-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-2-3-3"
+     x="1719.3042"
+     y="190">2:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-3-3"
+   x="1680"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.3042"
+   y="190"
+   id="label-2-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-2-3-4"
+     x="1859.3042"
+     y="190">2:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-3-4"
+   x="1820"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.3042"
+   y="190"
+   id="label-2-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-2-4-1"
+     x="1999.3042"
+     y="190">2:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-4-1"
+   x="1960"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.303"
+   y="190"
+   id="label-2-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-2-4-2"
+     x="2139.303"
+     y="190">2:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-4-2"
+   x="2100"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.303"
+   y="190"
+   id="label-2-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-2-4-3"
+     x="2279.303"
+     y="190">2:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-4-3"
+   x="2240"
+   y="110"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.303"
+   y="190"
+   id="label-2-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-2-4-4"
+     x="2419.303"
+     y="190">2:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-2-4-4"
+   x="2380"
+   y="110"
+   inkscape:svg-dpi="96" />
+</g>
+     <!-- Chapter 3 -->
+     <g
+   id="chapter-3">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.29999"
+   y="270"
+   id="label-3-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-3-1-1"
+     x="319.29999"
+     y="270">3:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-1-1"
+   x="280"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.29999"
+   y="270"
+   id="label-3-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-3-1-2"
+     x="459.29999"
+     y="270">3:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-1-2"
+   x="420"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.29993"
+   y="270"
+   id="label-3-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-3-1-3"
+     x="599.29993"
+     y="270">3:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-1-3"
+   x="560"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.29993"
+   y="270"
+   id="label-3-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-3-1-4"
+     x="739.29993"
+     y="270">3:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-1-4"
+   x="700"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.29993"
+   y="270"
+   id="label-3-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-3-2-1"
+     x="879.29993"
+     y="270">3:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-2-1"
+   x="840"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.3"
+   y="270"
+   id="label-3-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-3-2-2"
+     x="1019.3"
+     y="270">3:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-2-2"
+   x="980"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.2997"
+   y="270"
+   id="label-3-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-3-2-3"
+     x="1159.2997"
+     y="270">3:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-2-3"
+   x="1120"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.2997"
+   y="270"
+   id="label-3-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-3-2-4"
+     x="1299.2997"
+     y="270">3:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-2-4"
+   x="1260"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.2997"
+   y="270"
+   id="label-3-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-3-3-1"
+     x="1439.2997"
+     y="270">3:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-3-1"
+   x="1400"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.2997"
+   y="270"
+   id="label-3-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-3-3-2"
+     x="1579.2997"
+     y="270">3:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-3-2"
+   x="1540"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.2997"
+   y="270"
+   id="label-3-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-3-3-3"
+     x="1719.2997"
+     y="270">3:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-3-3"
+   x="1680"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.2997"
+   y="270"
+   id="label-3-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-3-3-4"
+     x="1859.2997"
+     y="270">3:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-3-4"
+   x="1820"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.2997"
+   y="270"
+   id="label-3-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-3-4-1"
+     x="1999.2997"
+     y="270">3:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-4-1"
+   x="1960"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.3013"
+   y="270"
+   id="label-3-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-3-4-2"
+     x="2139.3013"
+     y="270">3:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-4-2"
+   x="2100"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.3013"
+   y="270"
+   id="label-3-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-3-4-3"
+     x="2279.3013"
+     y="270">3:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-4-3"
+   x="2240"
+   y="190"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.3013"
+   y="270"
+   id="label-3-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-3-4-4"
+     x="2419.3013"
+     y="270">3:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-3-4-4"
+   x="2380"
+   y="190"
+   inkscape:svg-dpi="96" />
+</g>
+<g
+   id="chapter-4"
+   transform="translate(70)">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="318.79999"
+   y="349.89999"
+   id="label-4-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-4-1-1"
+     x="318.79999"
+     y="349.89999">4:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-1-1"
+   x="280"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="458.79999"
+   y="349.89999"
+   id="label-4-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-4-1-2"
+     x="458.79999"
+     y="349.89999">4:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-1-2"
+   x="420"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="598.79993"
+   y="349.89999"
+   id="label-4-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-4-1-3"
+     x="598.79993"
+     y="349.89999">4:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-1-3"
+   x="560"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="738.79993"
+   y="349.89999"
+   id="label-4-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-4-1-4"
+     x="738.79993"
+     y="349.89999">4:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-1-4"
+   x="700"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="878.79993"
+   y="349.89999"
+   id="label-4-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-4-2-1"
+     x="878.79993"
+     y="349.89999">4:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-2-1"
+   x="840"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1018.8"
+   y="349.89999"
+   id="label-4-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-4-2-2"
+     x="1018.8"
+     y="349.89999">4:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-2-2"
+   x="980"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1158.7998"
+   y="349.89999"
+   id="label-4-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-4-2-3"
+     x="1158.7998"
+     y="349.89999">4:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-2-3"
+   x="1120"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1298.7998"
+   y="349.89999"
+   id="label-4-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-4-2-4"
+     x="1298.7998"
+     y="349.89999">4:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-2-4"
+   x="1260"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1438.7998"
+   y="349.89999"
+   id="label-4-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-4-3-1"
+     x="1438.7998"
+     y="349.89999">4:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-3-1"
+   x="1400"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1578.7998"
+   y="349.89999"
+   id="label-4-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-4-3-2"
+     x="1578.7998"
+     y="349.89999">4:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-3-2"
+   x="1540"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1718.7998"
+   y="349.89999"
+   id="label-4-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-4-3-3"
+     x="1718.7998"
+     y="349.89999">4:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-3-3"
+   x="1680"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1858.7998"
+   y="349.89999"
+   id="label-4-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-4-3-4"
+     x="1858.7998"
+     y="349.89999">4:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-3-4"
+   x="1820"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1998.7998"
+   y="349.89999"
+   id="label-4-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-4-4-1"
+     x="1998.7998"
+     y="349.89999">4:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-4-1"
+   x="1960"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2138.8008"
+   y="349.89999"
+   id="label-4-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-4-4-2"
+     x="2138.8008"
+     y="349.89999">4:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-4-2"
+   x="2100"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2278.8008"
+   y="349.89999"
+   id="label-4-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-4-4-3"
+     x="2278.8008"
+     y="349.89999">4:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-4-3"
+   x="2240"
+   y="270"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2418.8008"
+   y="349.89999"
+   id="label-4-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-4-4-4"
+     x="2418.8008"
+     y="349.89999">4:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-4-4-4"
+   x="2380"
+   y="270"
+   inkscape:svg-dpi="96" />
+</g>
+<g
+   id="chapter-5">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.20001"
+   y="430"
+   id="label-5-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-5-1-1"
+     x="319.20001"
+     y="430">5:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-1-1"
+   x="280"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.20001"
+   y="430"
+   id="label-5-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-5-1-2"
+     x="459.20001"
+     y="430">5:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-1-2"
+   x="420"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.19995"
+   y="430"
+   id="label-5-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-5-1-3"
+     x="599.19995"
+     y="430">5:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-1-3"
+   x="560"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.19995"
+   y="430"
+   id="label-5-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-5-1-4"
+     x="739.19995"
+     y="430">5:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-1-4"
+   x="700"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.19995"
+   y="430"
+   id="label-5-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-5-2-1"
+     x="879.19995"
+     y="430">5:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-2-1"
+   x="840"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.2"
+   y="430"
+   id="label-5-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-5-2-2"
+     x="1019.2"
+     y="430">5:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-2-2"
+   x="980"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.1997"
+   y="430"
+   id="label-5-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-5-2-3"
+     x="1159.1997"
+     y="430">5:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-2-3"
+   x="1120"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.1997"
+   y="430"
+   id="label-5-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-5-2-4"
+     x="1299.1997"
+     y="430">5:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-2-4"
+   x="1260"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.1997"
+   y="430"
+   id="label-5-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-5-3-1"
+     x="1439.1997"
+     y="430">5:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-3-1"
+   x="1400"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.1997"
+   y="430"
+   id="label-5-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-5-3-2"
+     x="1579.1997"
+     y="430">5:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-3-2"
+   x="1540"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.1997"
+   y="430"
+   id="label-5-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-5-3-3"
+     x="1719.1997"
+     y="430">5:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-3-3"
+   x="1680"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.1997"
+   y="430"
+   id="label-5-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-5-3-4"
+     x="1859.1997"
+     y="430">5:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-3-4"
+   x="1820"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.1997"
+   y="430"
+   id="label-5-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-5-4-1"
+     x="1999.1997"
+     y="430">5:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-4-1"
+   x="1960"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.2012"
+   y="430"
+   id="label-5-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-5-4-2"
+     x="2139.2012"
+     y="430">5:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-4-2"
+   x="2100"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.2012"
+   y="430"
+   id="label-5-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-5-4-3"
+     x="2279.2012"
+     y="430">5:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-4-3"
+   x="2240"
+   y="350"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.2012"
+   y="430"
+   id="label-5-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-5-4-4"
+     x="2419.2012"
+     y="430">5:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-5-4-4"
+   x="2380"
+   y="350"
+   inkscape:svg-dpi="96" />
+</g>
+<g
+   id="chapter-6"
+   transform="translate(70)">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.39999"
+   y="510"
+   id="label-6-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-6-1-1"
+     x="319.39999"
+     y="510">6:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-1-1"
+   x="280"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.39999"
+   y="510"
+   id="label-6-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-6-1-2"
+     x="459.39999"
+     y="510">6:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-1-2"
+   x="420"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.39996"
+   y="510"
+   id="label-6-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-6-1-3"
+     x="599.39996"
+     y="510">6:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-1-3"
+   x="560"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.39996"
+   y="510"
+   id="label-6-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-6-1-4"
+     x="739.39996"
+     y="510">6:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-1-4"
+   x="700"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.39996"
+   y="510"
+   id="label-6-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-6-2-1"
+     x="879.39996"
+     y="510">6:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-2-1"
+   x="840"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.4"
+   y="510"
+   id="label-6-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-6-2-2"
+     x="1019.4"
+     y="510">6:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-2-2"
+   x="980"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.3997"
+   y="510"
+   id="label-6-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-6-2-3"
+     x="1159.3997"
+     y="510">6:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-2-3"
+   x="1120"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.3997"
+   y="510"
+   id="label-6-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-6-2-4"
+     x="1299.3997"
+     y="510">6:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-2-4"
+   x="1260"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.3997"
+   y="510"
+   id="label-6-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-6-3-1"
+     x="1439.3997"
+     y="510">6:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-3-1"
+   x="1400"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.3997"
+   y="510"
+   id="label-6-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-6-3-2"
+     x="1579.3997"
+     y="510">6:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-3-2"
+   x="1540"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.3997"
+   y="510"
+   id="label-6-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-6-3-3"
+     x="1719.3997"
+     y="510">6:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-3-3"
+   x="1680"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.3997"
+   y="510"
+   id="label-6-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-6-3-4"
+     x="1859.3997"
+     y="510">6:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-3-4"
+   x="1820"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.3997"
+   y="510"
+   id="label-6-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-6-4-1"
+     x="1999.3997"
+     y="510">6:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-4-1"
+   x="1960"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.4014"
+   y="510"
+   id="label-6-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-6-4-2"
+     x="2139.4014"
+     y="510">6:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-4-2"
+   x="2100"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.4014"
+   y="510"
+   id="label-6-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-6-4-3"
+     x="2279.4014"
+     y="510">6:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-4-3"
+   x="2240"
+   y="430"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.4014"
+   y="510"
+   id="label-6-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-6-4-4"
+     x="2419.4014"
+     y="510">6:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-6-4-4"
+   x="2380"
+   y="430"
+   inkscape:svg-dpi="96" />
+</g>
+<g
+   id="chapter-7">
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="319.29999"
+   y="590"
+   id="label-7-1-1"><tspan
+     sodipodi:role="line"
+     id="tspan-7-1-1"
+     x="319.29999"
+     y="590">7:1:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-1-1"
+   x="280"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="459.29999"
+   y="590"
+   id="label-7-1-2"><tspan
+     sodipodi:role="line"
+     id="tspan-7-1-2"
+     x="459.29999"
+     y="590">7:1:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-1-2"
+   x="420"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="599.29993"
+   y="590"
+   id="label-7-1-3"><tspan
+     sodipodi:role="line"
+     id="tspan-7-1-3"
+     x="599.29993"
+     y="590">7:1:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-1-3"
+   x="560"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="739.29993"
+   y="590"
+   id="label-7-1-4"><tspan
+     sodipodi:role="line"
+     id="tspan-7-1-4"
+     x="739.29993"
+     y="590">7:1:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-1-4"
+   x="700"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="879.29993"
+   y="590"
+   id="label-7-2-1"><tspan
+     sodipodi:role="line"
+     id="tspan-7-2-1"
+     x="879.29993"
+     y="590">7:2:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-2-1"
+   x="840"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1019.3"
+   y="590"
+   id="label-7-2-2"><tspan
+     sodipodi:role="line"
+     id="tspan-7-2-2"
+     x="1019.3"
+     y="590">7:2:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-2-2"
+   x="980"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1159.2997"
+   y="590"
+   id="label-7-2-3"><tspan
+     sodipodi:role="line"
+     id="tspan-7-2-3"
+     x="1159.2997"
+     y="590">7:2:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-2-3"
+   x="1120"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1299.2997"
+   y="590"
+   id="label-7-2-4"><tspan
+     sodipodi:role="line"
+     id="tspan-7-2-4"
+     x="1299.2997"
+     y="590">7:2:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-2-4"
+   x="1260"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1439.2997"
+   y="590"
+   id="label-7-3-1"><tspan
+     sodipodi:role="line"
+     id="tspan-7-3-1"
+     x="1439.2997"
+     y="590">7:3:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-3-1"
+   x="1400"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1579.2997"
+   y="590"
+   id="label-7-3-2"><tspan
+     sodipodi:role="line"
+     id="tspan-7-3-2"
+     x="1579.2997"
+     y="590">7:3:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-3-2"
+   x="1540"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1719.2997"
+   y="590"
+   id="label-7-3-3"><tspan
+     sodipodi:role="line"
+     id="tspan-7-3-3"
+     x="1719.2997"
+     y="590">7:3:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-3-3"
+   x="1680"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1859.2997"
+   y="590"
+   id="label-7-3-4"><tspan
+     sodipodi:role="line"
+     id="tspan-7-3-4"
+     x="1859.2997"
+     y="590">7:3:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-3-4"
+   x="1820"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="1999.2997"
+   y="590"
+   id="label-7-4-1"><tspan
+     sodipodi:role="line"
+     id="tspan-7-4-1"
+     x="1999.2997"
+     y="590">7:4:1</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-4-1"
+   x="1960"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2139.3013"
+   y="590"
+   id="label-7-4-2"><tspan
+     sodipodi:role="line"
+     id="tspan-7-4-2"
+     x="2139.3013"
+     y="590">7:4:2</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-4-2"
+   x="2100"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2279.3013"
+   y="590"
+   id="label-7-4-3"><tspan
+     sodipodi:role="line"
+     id="tspan-7-4-3"
+     x="2279.3013"
+     y="590">7:4:3</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-4-3"
+   x="2240"
+   y="510"
+   inkscape:svg-dpi="96" />
+  <text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:14px;font-family:Cochin;-inkscape-font-specification:'Cochin, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#999999;fill-opacity:1;stroke:#999999;stroke-linecap:square;stroke-opacity:1"
+   x="2419.3013"
+   y="590"
+   id="label-7-4-4"><tspan
+     sodipodi:role="line"
+     id="tspan-7-4-4"
+     x="2419.3013"
+     y="590">7:4:4</tspan></text>
+  <image
+   width="80"
+   height="68.153847"
+   preserveAspectRatio="none"
+   xlink:href="white-star.png"
+   id="star-7-4-4"
+   x="2380"
+   y="510"
+   inkscape:svg-dpi="96" />
+</g>
+   </g>
+   <g inkscape:groupmode="layer" id="layer5" inkscape:label="Lines">
+  <!-- Chapter 1 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 355,59.7 L 423,59.7" id="line-1-1-1-to-1-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 495,59.7 L 563,59.7" id="line-1-1-2-to-1-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 635,59.7 L 703,59.7" id="line-1-1-3-to-1-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 775,59.7 L 843,59.7" id="line-1-1-4-to-1-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 915,59.7 L 983,59.7" id="line-1-2-1-to-1-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1055,59.7 L 1123,59.7" id="line-1-2-2-to-1-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1195,59.7 L 1263,59.7" id="line-1-2-3-to-1-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1335,59.7 L 1403,59.7" id="line-1-2-4-to-1-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1475,59.7 L 1543,59.7" id="line-1-3-1-to-1-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1615,59.7 L 1683,59.7" id="line-1-3-2-to-1-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1755,59.7 L 1823,59.7" id="line-1-3-3-to-1-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1895,59.7 L 1963,59.7" id="line-1-3-4-to-1-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2035,59.7 L 2103,59.7" id="line-1-4-1-to-1-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2175,59.7 L 2243,59.7" id="line-1-4-2-to-1-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2315,59.7 L 2383,59.7" id="line-1-4-3-to-1-4-4" />
+  <!-- Chapter 2 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 425,139.7 L 493,139.7" id="line-2-1-1-to-2-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 565,139.7 L 633,139.7" id="line-2-1-2-to-2-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 705,139.7 L 773,139.7" id="line-2-1-3-to-2-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 845,139.7 L 913,139.7" id="line-2-1-4-to-2-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 985,139.7 L 1053,139.7" id="line-2-2-1-to-2-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1125,139.7 L 1193,139.7" id="line-2-2-2-to-2-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1265,139.7 L 1333,139.7" id="line-2-2-3-to-2-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1405,139.7 L 1473,139.7" id="line-2-2-4-to-2-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1545,139.7 L 1613,139.7" id="line-2-3-1-to-2-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1685,139.7 L 1753,139.7" id="line-2-3-2-to-2-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1825,139.7 L 1893,139.7" id="line-2-3-3-to-2-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1965,139.7 L 2033,139.7" id="line-2-3-4-to-2-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2105,139.7 L 2173,139.7" id="line-2-4-1-to-2-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2245,139.7 L 2313,139.7" id="line-2-4-2-to-2-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2385,139.7 L 2453,139.7" id="line-2-4-3-to-2-4-4" />
+  <!-- Chapter 3 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 355,219.7 L 423,219.7" id="line-3-1-1-to-3-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 495,219.7 L 563,219.7" id="line-3-1-2-to-3-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 635,219.7 L 703,219.7" id="line-3-1-3-to-3-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 775,219.7 L 843,219.7" id="line-3-1-4-to-3-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 915,219.7 L 983,219.7" id="line-3-2-1-to-3-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1055,219.7 L 1123,219.7" id="line-3-2-2-to-3-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1195,219.7 L 1263,219.7" id="line-3-2-3-to-3-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1335,219.7 L 1403,219.7" id="line-3-2-4-to-3-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1475,219.7 L 1543,219.7" id="line-3-3-1-to-3-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1615,219.7 L 1683,219.7" id="line-3-3-2-to-3-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1755,219.7 L 1823,219.7" id="line-3-3-3-to-3-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1895,219.7 L 1963,219.7" id="line-3-3-4-to-3-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2035,219.7 L 2103,219.7" id="line-3-4-1-to-3-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2175,219.7 L 2243,219.7" id="line-3-4-2-to-3-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2315,219.7 L 2383,219.7" id="line-3-4-3-to-3-4-4" />
+  <!-- Chapter 4 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 425,299.7 L 493,299.7" id="line-4-1-1-to-4-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 565,299.7 L 633,299.7" id="line-4-1-2-to-4-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 705,299.7 L 773,299.7" id="line-4-1-3-to-4-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 845,299.7 L 913,299.7" id="line-4-1-4-to-4-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 985,299.7 L 1053,299.7" id="line-4-2-1-to-4-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1125,299.7 L 1193,299.7" id="line-4-2-2-to-4-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1265,299.7 L 1333,299.7" id="line-4-2-3-to-4-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1405,299.7 L 1473,299.7" id="line-4-2-4-to-4-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1545,299.7 L 1613,299.7" id="line-4-3-1-to-4-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1685,299.7 L 1753,299.7" id="line-4-3-2-to-4-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1825,299.7 L 1893,299.7" id="line-4-3-3-to-4-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1965,299.7 L 2033,299.7" id="line-4-3-4-to-4-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2105,299.7 L 2173,299.7" id="line-4-4-1-to-4-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2245,299.7 L 2313,299.7" id="line-4-4-2-to-4-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2385,299.7 L 2453,299.7" id="line-4-4-3-to-4-4-4" />
+  <!-- Chapter 5 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 355,379.7 L 423,379.7" id="line-5-1-1-to-5-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 495,379.7 L 563,379.7" id="line-5-1-2-to-5-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 635,379.7 L 703,379.7" id="line-5-1-3-to-5-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 775,379.7 L 843,379.7" id="line-5-1-4-to-5-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 915,379.7 L 983,379.7" id="line-5-2-1-to-5-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1055,379.7 L 1123,379.7" id="line-5-2-2-to-5-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1195,379.7 L 1263,379.7" id="line-5-2-3-to-5-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1335,379.7 L 1403,379.7" id="line-5-2-4-to-5-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1475,379.7 L 1543,379.7" id="line-5-3-1-to-5-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1615,379.7 L 1683,379.7" id="line-5-3-2-to-5-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1755,379.7 L 1823,379.7" id="line-5-3-3-to-5-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1895,379.7 L 1963,379.7" id="line-5-3-4-to-5-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2035,379.7 L 2103,379.7" id="line-5-4-1-to-5-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2175,379.7 L 2243,379.7" id="line-5-4-2-to-5-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2315,379.7 L 2383,379.7" id="line-5-4-3-to-5-4-4" />
+  <!-- Chapter 6 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 425,459.7 L 493,459.7" id="line-6-1-1-to-6-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 565,459.7 L 633,459.7" id="line-6-1-2-to-6-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 705,459.7 L 773,459.7" id="line-6-1-3-to-6-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 845,459.7 L 913,459.7" id="line-6-1-4-to-6-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 985,459.7 L 1053,459.7" id="line-6-2-1-to-6-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1125,459.7 L 1193,459.7" id="line-6-2-2-to-6-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1265,459.7 L 1333,459.7" id="line-6-2-3-to-6-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1405,459.7 L 1473,459.7" id="line-6-2-4-to-6-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1545,459.7 L 1613,459.7" id="line-6-3-1-to-6-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1685,459.7 L 1753,459.7" id="line-6-3-2-to-6-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1825,459.7 L 1893,459.7" id="line-6-3-3-to-6-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1965,459.7 L 2033,459.7" id="line-6-3-4-to-6-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2105,459.7 L 2173,459.7" id="line-6-4-1-to-6-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2245,459.7 L 2313,459.7" id="line-6-4-2-to-6-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2385,459.7 L 2453,459.7" id="line-6-4-3-to-6-4-4" />
+  <!-- Chapter 7 Lines -->
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 355,539.7 L 423,539.7" id="line-7-1-1-to-7-1-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 495,539.7 L 563,539.7" id="line-7-1-2-to-7-1-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 635,539.7 L 703,539.7" id="line-7-1-3-to-7-1-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 775,539.7 L 843,539.7" id="line-7-1-4-to-7-2-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 915,539.7 L 983,539.7" id="line-7-2-1-to-7-2-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1055,539.7 L 1123,539.7" id="line-7-2-2-to-7-2-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1195,539.7 L 1263,539.7" id="line-7-2-3-to-7-2-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1335,539.7 L 1403,539.7" id="line-7-2-4-to-7-3-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1475,539.7 L 1543,539.7" id="line-7-3-1-to-7-3-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1615,539.7 L 1683,539.7" id="line-7-3-2-to-7-3-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1755,539.7 L 1823,539.7" id="line-7-3-3-to-7-3-4" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 1895,539.7 L 1963,539.7" id="line-7-3-4-to-7-4-1" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2035,539.7 L 2103,539.7" id="line-7-4-1-to-7-4-2" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2175,539.7 L 2243,539.7" id="line-7-4-2-to-7-4-3" />
+  <path style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1" d="M 2315,539.7 L 2383,539.7" id="line-7-4-3-to-7-4-4" />
+</g>
+</svg>
+       <div class="info-overlay">
+        <span class="arrow">❮</span>
+        <span class="info-icon">ⓘ</span>
+    </div>
+    </div>
+    <div class="congratulations-overlay" id="congratulationsOverlay">
+        <div class="congratulations-message">
+            <span id="congratsMessage"></span>
+        </div>
+    </div>
+    <div class="user-name-display">
+        <span id="userNameDisplay"></span>
+    </div>
+    <script src="students.js"></script>
+    <script src="script.js"></script>
+    <script src="starmap.js"></script>
+    <div id="consentPopup" style="display: none;">
+    <div class="consent-popup-content">
+        <p id="consentMessage"></p>
+        <div class="consent-buttons">
+            <button id="consentAcceptButton"></button>
+            <button id="consentRejectButton"></button>
+            <button id="consentPolicyLink" data-translate="consentPolicyLink"></button>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.touchAction = 'manipulation';
+    const nameInput = document.getElementById('nameInput');
+    if (nameInput) {
+        let originalScrollY = 0;
+        let isKeyboardOpen = false;
+
+        const lockViewport = () => {
+            if (!isKeyboardOpen) {
+                originalScrollY = window.scrollY;
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${originalScrollY}px`;
+                document.body.style.width = '100%';
+                document.body.style.overflow = 'hidden';
+                isKeyboardOpen = true;
+            }
+        };
+
+        const unlockViewport = () => {
+            if (isKeyboardOpen) {
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                window.scrollTo(0, originalScrollY);
+                isKeyboardOpen = false;
+                // Force re-run of setStarMapHeight to correct layout
+                setTimeout(() => {
+                    if (typeof setStarMapHeight === 'function') {
+                        setStarMapHeight();
+                    }
+                    if (typeof setViewportHeight === 'function') {
+                        setViewportHeight();
+                    }
+                }, 100);
+            }
+        };
+
+        nameInput.addEventListener('focus', () => {
+            document.body.classList.add('keyboard-open');
+            lockViewport();
+        });
+
+        nameInput.addEventListener('blur', () => {
+            document.body.classList.remove('keyboard-open');
+            unlockViewport();
+        });
+
+        window.addEventListener('resize', () => {
+            const viewportHeight = window.innerHeight;
+            const isKeyboardLikelyOpen = viewportHeight < 500; // Adjust threshold for iPads
+            if (isKeyboardLikelyOpen && !isKeyboardOpen) {
+                lockViewport();
+            } else if (!isKeyboardLikelyOpen && isKeyboardOpen) {
+                unlockViewport();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
